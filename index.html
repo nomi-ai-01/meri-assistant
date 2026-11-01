@@ -1,160 +1,154 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content"><meta name="theme-color" content="#F5F0E7"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="icon.svg"><title>Meri Assistant — Signature Edition</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
+<meta name="theme-color" content="#17121a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<title>Meri Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
- --bg:#F5F0E7;--bg2:#EAE0D2;--card:#FFFCF6;--inp:#FFFDF9;
- --ink:#281B2B;--mut:#786B70;--rose:#A66B70;--rt:#6E3C50;
- --fill:#54283F;--soft:#EFE5D8;--gold:#B18A4A;--gold2:#D8BD83;
- --lav:#8F6FD1;--bd:#DED0BD;--ibd:#CDBA9F;
- --al-bg:#F8E7E2;--al-bd:#BD655B;--al-tx:#873A34;--err:#A33D37;
- --ai:#FFFCF6;--sh:0 12px 32px rgba(47,29,42,.075);
- --sh-lg:0 20px 55px rgba(47,29,42,.12);
- --radius:22px;
+ --bg:#17121a;--bg2:#211923;--card:#271e29;--input:#1c1720;
+ --ink:#f4ede3;--mut:#c4b7be;--rose:#d1a19d;--accent:#e2c58f;
+ --fill:#75485c;--soft:#382c39;--gold:#c8a872;--border:#51404d;
+ --iborder:#715b68;--alert-bg:#44292d;--alert-border:#bd7771;
+ --alert-text:#f6d4ce;--error:#f1a49f;--ai:#2d232e;
+ --shadow:0 18px 42px rgba(0,0,0,.2);
 }
-body[data-t=dark]{
- color-scheme:dark;--bg:#17121A;--bg2:#211824;--card:#261D29;--inp:#1D1720;
- --ink:#F4EDE3;--mut:#BDB0B6;--rose:#D2A19A;--rt:#E0C18D;
- --fill:#78465D;--soft:#352A35;--gold:#C7A56B;--gold2:#E0C18D;
- --bd:#493A47;--ibd:#685564;--al-bg:#432729;--al-bd:#B96A63;--al-tx:#F3C8C0;
- --err:#F0A19A;--ai:#2B222D;--sh:0 12px 32px rgba(0,0,0,.24);
- --sh-lg:0 20px 55px rgba(0,0,0,.32);
+body[data-t=light]{
+ color-scheme:light;--bg:#f5f0e7;--bg2:#eae0d2;--card:#fffcf6;--input:#fffdf9;
+ --ink:#281b2b;--mut:#695b62;--rose:#875265;--accent:#684030;
+ --fill:#54283f;--soft:#efe5d8;--gold:#9b733e;--border:#d8c6b5;
+ --iborder:#bca891;--alert-bg:#f8e7e2;--alert-border:#ad5a50;
+ --alert-text:#78342f;--error:#a33d37;--ai:#fffcf6;
+ --shadow:0 15px 36px rgba(47,29,42,.09);
 }
+body[data-t=dark]{color-scheme:dark}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{
- margin:0;font-family:"DM Sans",system-ui,sans-serif;color:var(--ink);
- background:
-  radial-gradient(ellipse at 8% 0%,rgba(177,138,74,.10),transparent 34%),
-  radial-gradient(ellipse at 100% 24%,rgba(110,60,80,.07),transparent 32%),
-  linear-gradient(155deg,var(--bg),var(--bg2));
- background-attachment:fixed;min-height:100vh;padding-bottom:calc(92px + env(safe-area-inset-bottom));
- -webkit-font-smoothing:antialiased;
-}
+body{margin:0;width:100%;min-height:100%;padding-bottom:calc(114px + env(safe-area-inset-bottom));font-family:"DM Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 10% 0%,rgba(200,168,114,.075),transparent 38%),radial-gradient(ellipse at 100% 55%,rgba(117,72,92,.09),transparent 40%)}
 .hidden{display:none!important}
-.wrap{max-width:620px;margin:0 auto;padding:18px 17px 26px}
-h1,h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;letter-spacing:.005em;margin:.12em 0;font-variant-numeric:lining-nums}
-h1{font-size:clamp(34px,8vw,42px);line-height:1.02}
-h2{font-size:25px;line-height:1.12}
-small,.eb{color:var(--rt);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.wrap{width:100%;max-width:680px;margin:auto;padding:23px 20px 30px}
+h1,h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;margin:.12em 0;line-height:1.05}
+h1{font-size:clamp(37px,9vw,48px);letter-spacing:-.018em}
+h2{font-size:29px}
+.eyebrow{display:block;color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin:24px 0 8px}
 .mut{color:var(--mut);font-size:13px;line-height:1.65}
-.card{
- position:relative;background:var(--card);border:1px solid var(--bd);
- border-radius:var(--radius);padding:19px;margin:14px 0;
- box-shadow:var(--sh);overflow:hidden;
-}
-.card:before{content:"";position:absolute;left:0;top:0;width:42px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));opacity:.9}
+.card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:19px;padding:21px;margin:15px 0;box-shadow:var(--shadow);overflow:hidden}
+.card:before{content:"";position:absolute;top:0;left:20px;width:31px;height:2px;background:var(--gold)}
 button,input,select,textarea{font:inherit;color:inherit}
-button{
- border:1px solid transparent;border-radius:14px;padding:13px 17px;
- background:var(--soft);cursor:pointer;width:100%;margin-top:10px;
- font-weight:600;font-size:14px;transition:transform .18s ease,filter .18s ease,border-color .18s ease;
-}
-button:active{transform:scale(.985)}
-button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-button.p{
- background:linear-gradient(135deg,#3D2439,#704052 58%,#805064);color:#FFF8E9;
- border:1px solid rgba(211,181,123,.72);box-shadow:0 8px 22px rgba(67,36,58,.20);
-}
-button.d{background:#9D4942;color:#fff}
+button{min-height:45px;width:100%;padding:12px 16px;margin-top:10px;border:1px solid transparent;border-radius:15px;background:var(--soft);font-size:13px;font-weight:600;cursor:pointer;transition:background .18s,border-color .18s,transform .18s,opacity .18s}
+button:hover:not(:disabled){border-color:var(--gold)}
+button:active:not(:disabled){transform:scale(.98)}
+button:disabled{opacity:.52;cursor:wait}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+button.p{background:var(--fill);color:#fff8ed;border-color:var(--gold)}
+button.d{background:#813d40;color:#fff}
 button.q{background:transparent;color:var(--mut)}
-.round{width:44px;height:44px;padding:0;margin:0;display:inline-flex;align-items:center;justify-content:center;flex:none;border-radius:15px}
-input,select,textarea{
- width:100%;padding:14px 15px;border-radius:14px;border:1px solid var(--ibd);
- background:var(--inp);margin:7px 0 13px;font-size:14px;transition:border-color .2s,box-shadow .2s;
-}
-input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(177,138,74,.12);outline:0}
-input[type=checkbox]{accent-color:var(--fill)}
-label{font-size:12px;font-weight:700;letter-spacing:.035em;color:var(--mut)}
-.row{display:flex;gap:11px}.row>*{flex:1;min-width:0}.row.fr{align-items:flex-end}
-.top{display:flex;justify-content:space-between;align-items:center;padding:7px 2px 15px;margin-bottom:9px;border-bottom:1px solid rgba(177,138,74,.28)}
-.brand{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:700;letter-spacing:.015em;display:flex;align-items:center}
-.brand i{
- font-style:normal;display:inline-flex;align-items:center;justify-content:center;
- width:36px;height:36px;margin-right:10px;border-radius:12px;
- color:#F9EED9;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;
- background:linear-gradient(145deg,#352036,#704052);border:1px solid var(--gold);
- box-shadow:inset 0 0 0 3px rgba(219,190,133,.10),0 5px 13px rgba(53,32,54,.18);
-}
-svg.ic{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.alert{
- background:var(--al-bg);border:1px solid var(--al-bd);color:var(--al-tx);
- padding:13px 15px;border-radius:16px;margin:11px 0;font-weight:700;
- display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:13px;
-}
-.alert:before{content:"!";font-size:14px;line-height:1.3;border:1px solid currentColor;border-radius:50%;width:19px;height:19px;display:inline-flex;align-items:center;justify-content:center;flex:none}
-nav{
- position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;
- background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(18px);
- border-top:1px solid var(--bd);padding:8px 7px calc(8px + env(safe-area-inset-bottom));z-index:20;
- box-shadow:0 -8px 28px rgba(47,29,42,.07);
-}
-nav button{
- background:transparent;width:auto;flex:1;margin:0;padding:8px 2px;border-radius:13px;
- font-size:10px;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:4px;
- border:1px solid transparent;font-weight:600;letter-spacing:.015em;
-}
-nav button.a{color:var(--rt);background:var(--soft);border-color:rgba(177,138,74,.22)}
-nav button.a svg{stroke-width:2.1}
-.msg{display:flex;flex-direction:column;margin:13px 0}
+.round{width:46px;height:46px;min-height:46px;padding:0;margin:0;display:inline-flex;align-items:center;justify-content:center;flex:none;border-radius:16px}
+input,select,textarea{width:100%;min-height:47px;padding:13px 15px;border-radius:14px;border:1px solid var(--iborder);background:var(--input);margin:8px 0 15px;font-size:14px;transition:border-color .18s,box-shadow .18s}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,168,114,.15);outline:0}
+input::placeholder,textarea::placeholder{color:var(--mut);opacity:.8}
+input[type=checkbox]{width:19px;min-height:19px;height:19px;margin:0 9px 0 0;accent-color:var(--fill);vertical-align:middle}
+input[type=range]{accent-color:var(--gold);padding:0;min-height:32px}
+label{display:block;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--mut)}
+.checklabel{display:flex;align-items:center;min-height:46px;line-height:1.5}
+.row{display:flex;gap:12px}.row>*{flex:1;min-width:0}.row.fr{align-items:flex-end}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:4px 1px 19px;margin-bottom:13px;border-bottom:1px solid var(--border)}
+.brand{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;font-weight:700;display:flex;align-items:center;gap:11px;white-space:nowrap}
+.mark{display:inline-grid;place-items:center;width:39px;height:39px;flex:none;border:1px solid var(--gold);border-radius:12px;background:var(--soft);color:var(--accent);box-shadow:inset 0 0 0 3px var(--card)}
+.mark svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+svg.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.alert{width:100%;min-height:49px;margin:13px 0;padding:12px 14px;border:1px solid var(--alert-border);border-radius:15px;background:var(--alert-bg);color:var(--alert-text);display:flex;align-items:center;gap:10px;text-align:left;font-size:12px;font-weight:600}
+.alert:before{content:"!";width:20px;height:20px;display:inline-grid;place-items:center;flex:none;border:1px solid currentColor;border-radius:50%}
+#nav{position:fixed;bottom:calc(11px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:calc(100% - 24px);max-width:650px;z-index:20;display:flex;gap:4px;padding:7px;border:1px solid var(--border);border-radius:21px;background:var(--card);box-shadow:0 16px 45px rgba(0,0,0,.3)}
+#nav button{flex:1;width:auto;min-width:0;min-height:55px;margin:0;padding:7px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:14px;background:transparent;color:var(--mut);font-size:10px}
+#nav button.a{color:var(--accent);background:var(--soft);border-color:var(--border)}
+#nav button.a svg{stroke-width:2}
+.msg{display:flex;flex-direction:column;margin:15px 0;animation:up .3s ease both}
+@keyframes up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .msg.me{align-items:flex-end}.msg.ai{align-items:flex-start}
-.bub{max-width:90%;padding:13px 16px;border-radius:19px;line-height:1.65;font-size:14px;word-wrap:break-word;overflow-wrap:anywhere}
-.me .bub{background:linear-gradient(145deg,#3D2439,#704052);color:#FFF8E9;border-bottom-right-radius:6px;white-space:pre-wrap;box-shadow:0 6px 16px rgba(61,36,57,.15)}
-.ai .bub{background:var(--ai);border:1px solid var(--bd);border-left:2px solid var(--gold);border-bottom-left-radius:6px;box-shadow:var(--sh)}
-.bub p{margin:.35em 0}.bub h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:20px;margin:.7em 0 .25em}
-.bub ul,.bub ol{margin:.35em 0;padding-left:21px}.bub li{padding:2px 0}
-.err .bub{border-color:var(--err);color:var(--err)}
-.acts{display:flex;gap:7px;margin-top:7px}
-.acts button{width:auto;margin:0;padding:7px 13px;font-size:11px;background:var(--soft);color:var(--ink);border:1px solid var(--bd);border-radius:999px}
-.tag{display:inline-block;margin-top:7px;padding:6px 11px;border-radius:999px;background:var(--soft);border:1px solid var(--bd);color:var(--rt);font-size:11px;font-weight:700}
+.bub{max-width:89%;padding:14px 17px;border-radius:18px;line-height:1.65;font-size:14px;overflow-wrap:anywhere}
+.me .bub{background:var(--fill);color:#fff8ed;border:1px solid rgba(200,168,114,.3);border-bottom-right-radius:6px;white-space:pre-wrap}
+.ai .bub{background:var(--ai);border:1px solid var(--border);border-left:2px solid var(--gold);border-bottom-left-radius:6px}
+.bub p{margin:.35em 0}.bub h3{font:700 22px "Cormorant Garamond",Georgia,serif;margin:.7em 0 .25em}
+.bub ul,.bub ol{margin:.35em 0;padding-left:21px}
+.err .bub{border-color:var(--error);color:var(--error)}
+.acts{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.acts button{width:auto;min-height:34px;margin:0;padding:6px 13px;font-size:11px;background:var(--soft);border:1px solid var(--border);border-radius:999px}
+.tag{display:inline-block;margin-top:8px;padding:7px 11px;border-radius:999px;background:var(--soft);border:1px solid var(--border);color:var(--accent);font-size:11px;font-weight:600}
 .typing{display:inline-flex;gap:5px;padding:4px 2px}
 .typing i{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:b 1s infinite}
 .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
 @keyframes b{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
-#cmp{
- position:fixed;left:0;right:0;bottom:calc(66px + env(safe-area-inset-bottom));z-index:15;
- background:linear-gradient(transparent,var(--bg) 32%);padding:17px 13px 9px;
-}
-#cmp div{max-width:590px;margin:0 auto;display:flex;gap:9px;align-items:flex-end}
-#cmp textarea{margin:0;resize:none;max-height:130px;border-radius:19px;padding:13px 16px;box-shadow:0 5px 20px rgba(47,29,42,.07)}
+#cmp{position:fixed;left:0;right:0;bottom:calc(85px + env(safe-area-inset-bottom));z-index:15;padding:20px 14px 8px;background:linear-gradient(transparent,var(--bg) 30%)}
+#cmp .composer{max-width:640px;margin:auto;display:flex;gap:9px;align-items:flex-end}
+#cmp textarea{flex:1;min-width:0;max-height:130px;margin:0;resize:none;border-radius:17px;box-shadow:var(--shadow)}
 #cmp button{margin:0}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:13px 0 2px}
-.chip{padding:9px 13px;border-radius:999px;background:var(--soft);border:1px solid var(--bd);font-size:12px;cursor:pointer;font-weight:600;width:auto;margin:0;color:var(--rt)}
-.task{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--bd)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0 2px}
+.chip{width:auto;min-height:40px;margin:0;padding:9px 13px;border:1px solid var(--border);border-radius:999px;color:var(--accent);font-size:12px;text-align:left}
+.task{display:flex;flex-wrap:wrap;align-items:center;gap:12px;min-height:63px;padding:12px 0;border-bottom:1px solid var(--border)}
 .task:last-child{border:0}
-.task .ck{width:27px;height:27px;border-radius:50%;border:1.5px solid var(--gold);background:transparent;padding:0;margin:0;flex:none;color:#F3D9A4;font-size:14px;line-height:1}
-.task.done .ck{background:var(--fill);border-color:var(--gold)}
-.task .tt{flex:1;min-width:0}.task.done .tt b{text-decoration:line-through;opacity:.55}
-.task b{display:block;overflow-wrap:anywhere;font-size:14px}
-.task .x{width:34px;height:34px;padding:0;margin:0;background:transparent;color:var(--mut);font-size:20px;border:0}
-.late{color:var(--err);font-weight:700}
-.pan{
- position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;
- padding:22px;background:
- radial-gradient(ellipse at 15% 10%,rgba(177,138,74,.12),transparent 38%),
- linear-gradient(155deg,var(--bg),var(--bg2));overflow:auto;
-}
-.pan .card{width:100%;max-width:430px;padding:24px}
-#toast{
- position:fixed;bottom:calc(145px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);
- background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;opacity:0;
- transition:.3s;pointer-events:none;z-index:99;max-width:90%;font-size:12px;box-shadow:var(--sh-lg)
-}
+.task .ck{width:30px;height:30px;min-height:30px;flex:none;padding:0;margin:0;border:1.5px solid var(--gold);border-radius:50%;background:transparent;color:var(--accent)}
+.task.done .ck{background:var(--fill)}
+.task .tt{flex:1;min-width:0}.task.done .tt b{text-decoration:line-through;opacity:.58}
+.task b{display:block;overflow-wrap:anywhere;font-size:13px;line-height:1.5}
+.task .x{width:39px;height:39px;min-height:39px;padding:0;margin:0;background:transparent;color:var(--mut);font-size:22px}
+.late{color:var(--error);font-weight:700}
+.pan{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px;background:var(--bg);overflow:auto}
+.pan .card{width:100%;max-width:440px;padding:27px}
+#toast{position:fixed;bottom:calc(165px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);max-width:90%;z-index:99;pointer-events:none;padding:11px 17px;border:1px solid var(--gold);border-radius:999px;background:var(--card);color:var(--ink);font-size:12px;text-align:center;opacity:0;transition:opacity .25s;box-shadow:var(--shadow)}
 #toast.on{opacity:1}
-details summary{cursor:pointer;color:var(--rt);padding:4px 0}
-#voiceBtn{border-radius:50%;width:44px;height:44px;padding:0;display:inline-flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--gold);color:var(--rt)}#voiceBtn.listening{animation:voicePulse 1.2s infinite}@keyframes voicePulse{50%{box-shadow:0 0 0 9px rgba(177,138,74,0)}}.voice-settings{border-top:1px solid var(--bd);padding-top:14px;margin-top:14px}#cmp textarea{flex:1;min-width:0}
-@media(min-width:700px){
- .wrap{padding:25px 22px 35px}
- .top{padding-bottom:18px}
- .card{padding:22px}
-}
-@media(prefers-reduced-motion:reduce){
- *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-}
-</style></head><body>
-<div id="setup" class="pan hidden"><div class="card"><div class="brand"><i>MA</i>Meri Assistant</div><h2 style="margin-top:10px">Pehli dafa setup</h2><p class="mut">Cloudflare Worker ka address aur apni app key yahan likhein (SETUP.md mein bataya gaya hai).</p><label>Worker address</label><input id="su" placeholder="https://meri-assistant.xxxx.workers.dev" autocapitalize="off" autocorrect="off" inputmode="url"><label>App key</label><input id="sk" type="password" autocapitalize="off" autocorrect="off"><p id="se" style="color:var(--err);min-height:1.3em;font-size:14px;margin:0"></p><button class="p" id="sb" onclick="doSetup()">Jodein</button></div></div>
-<div id="app" class="wrap hidden"><div class="top"><div class="brand"><i>MA</i>Meri Assistant</div><button class="round" onclick="toggleTheme()" aria-label="theme"><svg class="ic" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button></div><div id="strip"></div><div id="v"></div></div>
-<div id="cmp" class="hidden"><div><textarea id="in" rows="1" placeholder="Kuch bhi likhein…" maxlength="4000"></textarea><button class="round" id="voiceBtn" onclick="toggleVoice()" aria-label="Boliye" title="Boliye"><svg class="ic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"></path></svg></button><button class="round p" id="send" onclick="send()" aria-label="send"><svg class="ic" viewBox="0 0 24 24" style="stroke:#FFF1D6"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button></div></div>
-<nav id="nav" class="hidden"></nav><div id="toast"></div><button id="voiceStop" class="hidden" onclick="stopVoice()" style="position:fixed;right:14px;bottom:calc(145px + env(safe-area-inset-bottom));z-index:30;width:auto;border-radius:999px;background:var(--fill);color:#fff8e9;border:1px solid var(--gold)">Ruk jao</button>
+details summary{cursor:pointer;color:var(--accent);padding:5px 0}
+#voiceBtn{border-radius:50%;background:var(--card);border:1px solid var(--gold);color:var(--accent)}
+#voiceBtn.listening{box-shadow:0 0 0 5px rgba(200,168,114,.22)}
+.voice-settings{padding-top:23px}
+.confirm-row{display:flex;gap:8px;margin-top:8px;width:100%}
+.confirm-row button{flex:1}
+#voiceStop{position:fixed;right:17px;bottom:calc(164px + env(safe-area-inset-bottom));z-index:30;width:auto;border:1px solid var(--gold);border-radius:999px;background:var(--fill);color:#fff8ed}
+@media(max-width:380px){.wrap{padding-left:15px;padding-right:15px}.row.fr{flex-direction:column;align-items:stretch;gap:0}.brand{font-size:24px}}
+@media(min-width:700px){.wrap{padding-top:31px}.card{padding:25px}#cmp{bottom:94px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<main id="setup" class="pan hidden" aria-label="Setup">
+ <div class="card">
+  <div class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 18V6l7 8 7-8v12"/></svg></span>Meri Assistant</div>
+  <h1 style="margin-top:14px">Pehli dafa setup</h1>
+  <p class="mut">Cloudflare Worker ka address aur apni app key yahan likhein (SETUP.md mein bataya gaya hai).</p>
+  <label for="su">Worker address</label>
+  <input id="su" placeholder="https://meri-assistant.xxxx.workers.dev" autocapitalize="off" autocorrect="off" inputmode="url">
+  <label for="sk">App key</label>
+  <input id="sk" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" aria-describedby="se">
+  <p id="se" role="alert" style="color:var(--error);min-height:1.4em;font-size:13px;margin:0"></p>
+  <button type="button" id="sb" class="p" onclick="doSetup()">Jodein</button>
+ </div>
+</main>
+<div id="app" class="wrap hidden">
+ <header class="top">
+  <div class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 18V6l7 8 7-8v12"/></svg></span>Meri Assistant</div>
+  <button type="button" class="round" onclick="toggleTheme()" aria-label="Theme badlein"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+ </header>
+ <main><div id="strip"></div><div id="v"></div></main>
+</div>
+<div id="cmp" class="hidden">
+ <div class="composer">
+  <label for="in" class="sr-only">Paigham</label>
+  <textarea id="in" rows="1" placeholder="Kuch bhi likhein…" maxlength="4000"></textarea>
+  <button type="button" class="round" id="voiceBtn" onclick="toggleVoice()" aria-label="Boliye" title="Boliye"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"/></svg></button>
+  <button type="button" class="round p" id="send" onclick="send()" aria-label="Bhejein"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+ </div>
+</div>
+<nav id="nav" class="hidden" aria-label="Main navigation"></nav>
+<div id="toast" role="status" aria-live="polite"></div>
+<button type="button" id="voiceStop" class="hidden" onclick="stopVoice()">Ruk jao</button>
 <script>
 const $=s=>document.querySelector(s);
 const J=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}};
@@ -168,134 +162,181 @@ const dd=(a,b)=>Math.round((P(b)-P(a))/864e5);
 const fd=s=>{const d=P(s);return DAYS[d.getDay()]+", "+d.getDate()+" "+MON[d.getMonth()]};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function toast(m){const e=$("#toast");e.textContent=m;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),2800)}
-function applyTheme(){const x=theme==="auto"?(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"):theme;document.body.dataset.t=x;const m=document.querySelector("meta[name=theme-color]");if(m)m.content=x==="dark"?"#150A1A":"#F5F0E7"}
+function applyTheme(){const x=theme==="auto"?(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"):theme;document.body.dataset.t=x;const m=document.querySelector("meta[name=theme-color]");if(m)m.content=x==="dark"?"#17121a":"#f5f0e7"}
 function toggleTheme(){theme=document.body.dataset.t==="dark"?"light":"dark";W("as_theme",theme);applyTheme()}
 async function api(path,body){
-  let r;try{r=await fetch(cfg.url.replace(/\/+$/,"")+path,{method:body?"POST":"GET",headers:{"x-app-key":cfg.key,"content-type":"application/json"},body:body?JSON.stringify({...body,tzOffset:-new Date().getTimezoneOffset()}):undefined,signal:AbortSignal.timeout(75000)})}catch(e){throw new Error(e.name==="TimeoutError"?"Bohat der lag gayi, dobara koshish karein":"Internet ya server tak nahi pahunch saki")}
-  let j;try{j=await r.json()}catch(e){j={error:"Server ka jawab samajh nahi aaya ("+r.status+")"}}
-  if(!r.ok||j.error)throw new Error(j.error||("Masla "+r.status));
-  if(j.tasks){R.tasks=j.tasks;R.memory=j.memory;R.subs=j.subs;R.vapid=j.vapid;R.dh=j.dh}
-  return j}
-// ---------- markdown ----------
-function md(t){const inl=s=>esc(s).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/(^|[\s(])\*(?!\s)(.+?)\*(?=[\s).,!?]|$)/g,"$1<i>$2</i>").replace(/`([^`]+)`/g,"<code>$1</code>");
-  let out="",list=null;const close=()=>{if(list){out+="</"+list+">";list=null}};
-  for(const raw of String(t).split("\n")){const l=raw.trimEnd();let m;
-    if(m=/^\s*[-*•]\s+(.*)/.exec(l)){if(list!=="ul"){close();out+="<ul>";list="ul"}out+="<li>"+inl(m[1])+"</li>"}
-    else if(m=/^\s*\d+[.)]\s+(.*)/.exec(l)){if(list!=="ol"){close();out+="<ol>";list="ol"}out+="<li>"+inl(m[1])+"</li>"}
-    else{close();if(m=/^#{1,4}\s+(.*)/.exec(l))out+="<h3>"+inl(m[1])+"</h3>";else if(l.trim())out+="<p>"+inl(l)+"</p>"}}
-  close();return out}
-// ---------- chrome ----------
+ let r;try{r=await fetch(cfg.url.replace(/\/+$/,"")+path,{method:body?"POST":"GET",headers:{"x-app-key":cfg.key,"content-type":"application/json"},body:body?JSON.stringify({...body,tzOffset:-new Date().getTimezoneOffset()}):undefined,signal:AbortSignal.timeout(75000)})}catch(e){throw new Error(e.name==="TimeoutError"?"Bohat der lag gayi, dobara koshish karein":"Internet ya server tak nahi pahunch saki")}
+ let j;try{j=await r.json()}catch(e){j={error:"Server ka jawab samajh nahi aaya ("+r.status+")"}}
+ if(!r.ok||j.error)throw new Error(j.error||("Masla "+r.status));
+ if(j.tasks){R.tasks=j.tasks;R.memory=j.memory;R.subs=j.subs;R.vapid=j.vapid;R.dh=j.dh}
+ return j
+}
+function md(t){
+ const inl=s=>esc(s).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/(^|[\s(])\*(?!\s)(.+?)\*(?=[\s).,!?]|$)/g,"$1<i>$2</i>").replace(/`([^`]+)`/g,"<code>$1</code>");
+ let out="",list=null;const close=()=>{if(list){out+="</"+list+">";list=null}};
+ for(const raw of String(t).split("\n")){const l=raw.trimEnd();let m;
+  if(m=/^\s*[-*•]\s+(.*)/.exec(l)){if(list!=="ul"){close();out+="<ul>";list="ul"}out+="<li>"+inl(m[1])+"</li>"}
+  else if(m=/^\s*\d+[.)]\s+(.*)/.exec(l)){if(list!=="ol"){close();out+="<ol>";list="ol"}out+="<li>"+inl(m[1])+"</li>"}
+  else{close();if(m=/^#{1,4}\s+(.*)/.exec(l))out+="<h3>"+inl(m[1])+"</h3>";else if(l.trim())out+="<p>"+inl(l)+"</p>"}}
+ close();return out
+}
 const IC={chat:'<path d="M21 12a8 8 0 0 1-11.5 7.2L4 20l1-4.4A8 8 0 1 1 21 12z"/>',task:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',mem:'<path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>',set:'<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>'};
 const NAMES={chat:"Baat",task:"Kaam",mem:"Yaad",set:"Settings"};
 function pending(){return R.tasks.filter(t=>!t.done)}
-function strip(){const td=today(),p=pending(),late=p.filter(t=>t.date<td).length,now=p.filter(t=>t.date===td).length;
-  const off=tab!=="set"&&(!("Notification"in window)||Notification.permission!=="granted"||!R.subs);
-  $("#strip").innerHTML=(tab!=="task"&&(late||now)?`<div class="alert" onclick="go('task')"><span>${now?`Aaj ${now} kaam hai`:""}${now&&late?" · ":""}${late?`${late} kaam guzar chuka`:""}</span></div>`:"")+(off&&cfg?`<div class="card" style="padding:12px 14px;margin:10px 0;cursor:pointer" onclick="go('set')"><span class="mut"><b>Alert abhi on nahi.</b> Settings mein "Alert on karein" dabayein, tab hi phone par yaad dihani aayegi.</span></div>`:"")}
-function ui(){$("#nav").innerHTML=["chat","task","mem","set"].map(k=>`<button class="${tab===k?"a":""}" onclick="go('${k}')"><svg class="ic" viewBox="0 0 24 24">${IC[k]}</svg>${NAMES[k]}</button>`).join("");$("#cmp").classList.toggle("hidden",tab!=="chat");strip()}
+function strip(){
+ const td=today(),p=pending(),late=p.filter(t=>t.date<td).length,now=p.filter(t=>t.date===td).length;
+ const off=tab!=="set"&&(!("Notification"in window)||Notification.permission!=="granted"||!R.subs);
+ $("#strip").innerHTML=(tab!=="task"&&(late||now)?`<button type="button" class="alert" onclick="go('task')"><span>${now?`Aaj ${now} kaam hai`:""}${now&&late?" · ":""}${late?`${late} kaam guzar chuka`:""}</span></button>`:"")+(off&&cfg?`<button type="button" class="card" style="width:100%;padding:13px 16px;margin:10px 0;text-align:left" onclick="go('set')"><span class="mut"><b>Alert abhi on nahi.</b> Settings mein "Alert on karein" dabayein, tab hi phone par yaad dihani aayegi.</span></button>`:"")
+}
+function ui(){$("#nav").innerHTML=["chat","task","mem","set"].map(k=>`<button type="button" class="${tab===k?"a":""}" ${tab===k?'aria-current="page"':""} onclick="go('${k}')"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${IC[k]}</svg>${NAMES[k]}</button>`).join("");$("#cmp").classList.toggle("hidden",tab!=="chat");strip()}
 function go(k){tab=k;draw();scrollTo(0,0);if(k==="chat")bottom()}
-function draw(){ui();({chat:vChat,task:vTask,mem:vMem,set:vSet})[tab]()}
+function draw(){ui();({chat:vChat,task:vTask,mem:vMem,set:vSet})[tab]();if(tab==="set")vsettings()}
 const bottom=()=>setTimeout(()=>scrollTo(0,document.body.scrollHeight),30);
-// ---------- chat ----------
 const SUG=["Kal subah 9 baje doctor ke paas jana hai","Meri Urdu ki assignment likh do: 'Mehnat ka phal'","Mujhe ye yaad rakhna: meri behan ka naam Sana hai","Aaj mere kaam kya hain?"];
 function bubble(m,i){
-  if(m.role==="user")return `<div class="msg me"><div class="bub">${esc(m.text)}</div></div>`;
-  const tags=(m.added||[]).map(t=>`<span class="tag">✓ Kaam shaamil: ${esc(t.title)} · ${fd(t.date)}${t.time?" "+t.time:""}</span>`).concat((m.rem||[]).map(t=>`<span class="tag">♡ Yaad rakh liya: ${esc(t)}</span>`)).join("<br>");
-  return `<div class="msg ai${m.err?" err":""}"><div class="bub">${m.err?esc(m.text):md(m.text)}</div>${tags?`<div>${tags}</div>`:""}${m.err?"":`<div class="acts"><button onclick="cp(${i})">Copy</button><button onclick="dl(${i})">Download</button><button onclick="speakMsg(${i})">Suniye</button></div>`}</div>`}
-function vChat(){const v=$("#v");
-  v.innerHTML=`<div id="msgs">${msgs.length?msgs.map(bubble).join(""):`<div class="card"><h1>Assalam o Alaikum 🌸</h1><p class="mut">Main aap ki assistant hoon. Mujhe apne kaam, tareekhein aur zaroori baatein batayein. Main unhein munazzam rakhne aur waqt par yaad dilane mein madad karungi.</p><div class="chips">${SUG.map((s,i)=>`<button class="chip" onclick="sug(${i})">${esc(s)}</button>`).join("")}</div></div>`}${busy?`<div class="msg ai"><div class="bub"><span class="typing"><i></i><i></i><i></i></span></div></div>`:""}</div><div style="height:120px"></div>`}
+ if(m.role==="user")return `<div class="msg me"><div class="bub">${esc(m.text)}</div></div>`;
+ const tags=(m.added||[]).map(t=>`<span class="tag">✓ Kaam shaamil: ${esc(t.title)} · ${fd(t.date)}${t.time?" "+esc(t.time):""}</span>`).concat((m.rem||[]).map(t=>`<span class="tag">♡ Yaad rakh liya: ${esc(t)}</span>`)).join("<br>");
+ return `<div class="msg ai${m.err?" err":""}"><div class="bub">${m.err?esc(m.text):md(m.text)}</div>${tags?`<div>${tags}</div>`:""}${m.err?"":`<div class="acts"><button type="button" onclick="cp(${i})">Copy</button><button type="button" onclick="dl(${i})">Download</button><button type="button" onclick="speakMsg(${i})">Suniye</button></div>`}</div>`
+}
+function vChat(){
+ $("#v").innerHTML=`<div id="msgs">${msgs.length?msgs.map(bubble).join(""):`<div class="card"><h1>Assalam o Alaikum 🌸</h1><p class="mut">Main aap ki assistant hoon. Mujhe apne kaam, tareekhein aur zaroori baatein batayein. Main unhein munazzam rakhne aur waqt par yaad dilane mein madad karungi.</p><div class="chips">${SUG.map((s,i)=>`<button type="button" class="chip" onclick="sug(${i})">${esc(s)}</button>`).join("")}</div></div>`}${busy?`<div class="msg ai" aria-label="Jawab aa raha hai"><div class="bub"><span class="typing"><i></i><i></i><i></i></span></div></div>`:""}</div><div style="height:130px"></div>`
+}
 function sug(i){$("#in").value=SUG[i];$("#in").focus()}
-async function send(){const el=$("#in"),text=el.value.trim();if(!text||busy)return;
-  msgs.push({role:"user",text});el.value="";fit();busy=true;W("as_msgs",msgs.slice(-120));draw();bottom();
-  const hist=msgs.filter(m=>!m.err).slice(-24).map(m=>({role:m.role,text:m.text}));
-  try{const j=await api("/api/chat",{history:hist});msgs.push({role:"ai",text:j.reply,added:j.added,rem:j.remembered});
-    if(j.added&&j.added.length)toast("Kaam shaamil ho gaya ✓")}
-  catch(e){msgs.push({role:"ai",text:"Maazrat, jawab nahi aaya: "+e.message,err:1})}
-  busy=false;msgs=msgs.slice(-120);W("as_msgs",msgs);draw();bottom()}
+async function send(){
+ const el=$("#in"),text=el.value.trim();if(!text||busy)return;
+ msgs.push({role:"user",text});el.value="";fit();busy=true;$("#send").disabled=true;W("as_msgs",msgs.slice(-120));draw();bottom();
+ const hist=msgs.filter(m=>!m.err).slice(-24).map(m=>({role:m.role,text:m.text}));
+ let spoken=null;
+ try{const j=await api("/api/chat",{history:hist});msgs.push({role:"ai",text:j.reply,added:j.added,rem:j.remembered});spoken=j.reply;if(j.added&&j.added.length)toast("Kaam shaamil ho gaya ✓")}
+ catch(e){msgs.push({role:"ai",text:"Maazrat, jawab nahi aaya: "+e.message,err:1})}
+ busy=false;$("#send").disabled=false;msgs=msgs.slice(-120);W("as_msgs",msgs);draw();bottom();
+ if(spoken&&vget("reply",false))speakText(spoken)
+}
 function fit(){const e=$("#in");e.style.height="auto";e.style.height=Math.min(e.scrollHeight,130)+"px"}
 async function cp(i){const t=msgs[i].text;try{await navigator.clipboard.writeText(t)}catch(e){const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove()}toast("Copy ho gaya")}
-function dl(i){const h=`<html><head><meta charset="utf-8"><title>Meri Assistant — Signature Edition</title></head><body style="font-family:Calibri,Arial;font-size:12pt">${md(msgs[i].text)}</body></html>`;
-  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿",h],{type:"application/msword"}));a.download="assistant-"+today()+".doc";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),60000);toast("Download shuru")}
-// ---------- tasks ----------
-function vTask(){const td=today(),by={late:[],today:[],tom:[],week:[],later:[],done:[]};
-  [...R.tasks].sort((a,b)=>(a.date+(a.time||"99:99")).localeCompare(b.date+(b.time||"99:99"))).forEach(t=>{const d=dd(td,t.date);
-    (t.done?by.done:d<0?by.late:d===0?by.today:d===1?by.tom:d<=7?by.week:by.later).push(t)});
-  const row=t=>`<div class="task${t.done?" done":""}"><button class="ck" onclick="tdone('${t.id}',${!t.done})" aria-label="done">${t.done?"✓":""}</button><div class="tt"><b>${esc(t.title)}</b><span class="mut ${!t.done&&t.date<td?"late":""}">${fd(t.date)}${t.time?" · "+t.time:""}</span></div><button class="x" onclick="trm('${t.id}')" aria-label="delete">×</button></div>`;
-  const sec=(n,a,c)=>a.length?`<div class="card"><h2 ${c?`class="late"`:""}>${n}</h2>${a.map(row).join("")}</div>`:"";
-  $("#v").innerHTML=`<small>AAPKE KAAM</small><h1>Kaam aur tareekhein</h1>${R.tasks.some(t=>!t.done)?"":`<p class="mut">Abhi koi kaam nahi. Neeche se shaamil karein ya "Baat" mein assistant ko bata dein.</p>`}${sec("Guzar chuke",by.late,1)}${sec("Aaj",by.today)}${sec("Kal",by.tom)}${sec("Is hafte",by.week)}${sec("Baad mein",by.later)}
-  <div class="card"><h2>Naya kaam</h2><label>Kaam</label><input id="nt" maxlength="200" placeholder="jaise: Assignment jama karani hai"><div class="row fr"><div><label>Tareekh</label><input id="nd" type="date" value="${td}"></div><div><label>Waqt (optional)</label><input id="ntm" type="time"></div></div><button class="p" onclick="tadd()">Shaamil karein</button></div>${by.done.length?`<details class="card"><summary><b>Mukammal (${by.done.length})</b></summary>${by.done.map(row).join("")}</details>`:""}`}
-async function tadd(){const title=$("#nt").value.trim(),date=$("#nd").value;if(!title||!date){toast("Kaam aur tareekh likhein");return}
-  try{await api("/api/task",{title,date,time:$("#ntm").value||""});toast("Shaamil ho gaya ✓");draw()}catch(e){toast(e.message)}}
+function dl(i){
+ const h=`<html><head><meta charset="utf-8"><title>Meri Assistant</title></head><body style="font-family:Calibri,Arial;font-size:12pt">${md(msgs[i].text)}</body></html>`;
+ const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff",h],{type:"application/msword"}));a.download="assistant-"+today()+".doc";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),60000);toast("Download shuru")
+}
+function vTask(){
+ const td=today(),by={late:[],today:[],tom:[],week:[],later:[],done:[]};
+ [...R.tasks].sort((a,b)=>(a.date+(a.time||"99:99")).localeCompare(b.date+(b.time||"99:99"))).forEach(t=>{const d=dd(td,t.date);(t.done?by.done:d<0?by.late:d===0?by.today:d===1?by.tom:d<=7?by.week:by.later).push(t)});
+ const row=t=>`<div class="task${t.done?" done":""}" data-id="${esc(t.id)}"><button type="button" class="ck" onclick="tdone('${esc(t.id)}',${!t.done})" aria-label="${t.done?"Kaam dobara kholein":"Mukammal karein"}">${t.done?"✓":""}</button><div class="tt"><b>${esc(t.title)}</b><span class="mut ${!t.done&&t.date<td?"late":""}">${fd(t.date)}${t.time?" · "+esc(t.time):""}</span></div><button type="button" class="x" onclick="trm('${esc(t.id)}')" aria-label="Kaam hata dein">×</button></div>`;
+ const sec=(n,a,c)=>a.length?`<section class="card"><h2 ${c?`class="late"`:""}>${n}</h2>${a.map(row).join("")}</section>`:"";
+ $("#v").innerHTML=`<span class="eyebrow">AAPKE KAAM</span><h1>Kaam aur tareekhein</h1>${R.tasks.some(t=>!t.done)?"":`<p class="mut">Abhi koi kaam nahi. Neeche se shaamil karein ya "Baat" mein assistant ko bata dein.</p>`}${sec("Guzar chuke",by.late,1)}${sec("Aaj",by.today)}${sec("Kal",by.tom)}${sec("Is hafte",by.week)}${sec("Baad mein",by.later)}
+ <section class="card"><h2>Naya kaam</h2><label for="nt">Kaam</label><input id="nt" maxlength="200" placeholder="jaise: Assignment jama karani hai"><div class="row fr"><div><label for="nd">Tareekh</label><input id="nd" type="date" value="${td}"></div><div><label for="ntm">Waqt (optional)</label><input id="ntm" type="time"></div></div><button type="button" class="p" onclick="tadd(event)">Shaamil karein</button></section>${by.done.length?`<details class="card"><summary><b>Mukammal (${by.done.length})</b></summary>${by.done.map(row).join("")}</details>`:""}`
+}
+async function tadd(event){const title=$("#nt").value.trim(),date=$("#nd").value;if(!title||!date){toast("Kaam aur tareekh likhein");return}const b=event.currentTarget;b.disabled=true;try{await api("/api/task",{title,date,time:$("#ntm").value||""});toast("Shaamil ho gaya ✓");draw()}catch(e){toast(e.message)}finally{b.disabled=false}}
 async function tdone(id,done){try{await api("/api/task/update",{id,done});draw()}catch(e){toast(e.message)}}
-async function trm(id){if(!confirm("Ye kaam hata dein?"))return;try{await api("/api/task/update",{id,remove:true});draw()}catch(e){toast(e.message)}}
-// ---------- memory ----------
-function vMem(){$("#v").innerHTML=`<small>MAIN YAAD RAKHTI HOON</small><h1>Aapki baatein</h1><div class="card">${R.memory.length?R.memory.map((m,i)=>`<div class="task"><div class="tt"><b style="font-weight:500">${esc(m)}</b></div><button class="x" onclick="mrm(${i})" aria-label="delete">×</button></div>`).join(""):`<p class="mut">Abhi kuch yaad nahi. "Baat" mein kahein: "ye yaad rakhna…"</p>`}</div><div class="card"><label>Khud likh kar yaad karwayein</label><input id="mi" maxlength="300" placeholder="jaise: Mujhe chai mein cheeni kam pasand hai"><button class="p" onclick="madd()">Yaad rakhein</button></div>`}
-async function madd(){const v=$("#mi").value.trim();if(!v)return;try{await api("/api/memory",{add:v});draw()}catch(e){toast(e.message)}}
+function trm(id){showConfirm("task-"+id,"Ye kaam hata dein?",async()=>{try{await api("/api/task/update",{id,remove:true});draw()}catch(e){toast(e.message)}})}
+function vMem(){
+ $("#v").innerHTML=`<span class="eyebrow">MAIN YAAD RAKHTI HOON</span><h1>Aapki baatein</h1><section class="card">${R.memory.length?R.memory.map((m,i)=>`<div class="task"><div class="tt"><b style="font-weight:500">${esc(m)}</b></div><button type="button" class="x" onclick="mrm(${i})" aria-label="Yaad hatayein">×</button></div>`).join(""):`<p class="mut">Abhi kuch yaad nahi. "Baat" mein kahein: "ye yaad rakhna…"</p>`}</section><section class="card"><label for="mi">Khud likh kar yaad karwayein</label><input id="mi" maxlength="300" placeholder="jaise: Mujhe chai mein cheeni kam pasand hai"><button type="button" class="p" onclick="madd(event)">Yaad rakhein</button></section>`
+}
+async function madd(event){const v=$("#mi").value.trim();if(!v)return;const b=event.currentTarget;b.disabled=true;try{await api("/api/memory",{add:v});draw()}catch(e){toast(e.message)}finally{b.disabled=false}}
 async function mrm(i){try{await api("/api/memory",{remove:i});draw()}catch(e){toast(e.message)}}
-// ---------- push ----------
 const u8=s=>{s=s.replace(/-/g,"+").replace(/_/g,"/");while(s.length%4)s+="=";return Uint8Array.from(atob(s),c=>c.charCodeAt(0))};
 async function enablePush(){
-  if(!("serviceWorker"in navigator)||!("PushManager"in window)||!("Notification"in window)){toast("Is browser mein alert support nahi");return}
-  try{const p=await Notification.requestPermission();if(p!=="granted"){toast("Alert ki ijazat nahi di gayi");return}
-    const reg=await navigator.serviceWorker.ready;let sub=await reg.pushManager.getSubscription();
-    if(sub){const k=sub.options&&sub.options.applicationServerKey;if(k&&btoa(String.fromCharCode(...new Uint8Array(k))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")!==R.vapid){await sub.unsubscribe();sub=null}}
-    if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:u8(R.vapid)});
-    await api("/api/subscribe",{sub:sub.toJSON()});toast("Alert on ho gaye ✓");draw()}catch(e){toast("Masla: "+e.message)}}
+ if(!("serviceWorker"in navigator)||!("PushManager"in window)||!("Notification"in window)){toast("Is browser mein alert support nahi");return}
+ try{const p=await Notification.requestPermission();if(p!=="granted"){toast("Alert ki ijazat nahi di gayi");return}
+  const reg=await navigator.serviceWorker.ready;let sub=await reg.pushManager.getSubscription();
+  if(sub){const k=sub.options&&sub.options.applicationServerKey;if(k&&btoa(String.fromCharCode(...new Uint8Array(k))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")!==R.vapid){await sub.unsubscribe();sub=null}}
+  if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:u8(R.vapid)});
+  await api("/api/subscribe",{sub:sub.toJSON()});toast("Alert on ho gaye ✓");draw()}catch(e){toast("Masla: "+e.message)}
+}
 async function testPush(){try{const j=await api("/api/test-push",{});toast(j.sent?"Test alert bhej diya ✓":"Koi device jura hua nahi, pehle alert on karein")}catch(e){toast(e.message)}}
 async function resync(){try{if(!("serviceWorker"in navigator)||!("Notification"in window)||Notification.permission!=="granted")return;const reg=await navigator.serviceWorker.ready,s=await reg.pushManager.getSubscription();if(s)await api("/api/subscribe",{sub:s.toJSON()})}catch(e){}}
-// ---------- settings ----------
-function vSet(){const perm="Notification"in window?Notification.permission:"na";
-  $("#v").innerHTML=`<small>AAPKI MARZI</small><h1>Settings</h1>
-  <div class="card voice-settings"><h2>Awaaz</h2>
-<label for="voiceLang">Bolne ki zubaan</label><select id="voiceLang" onchange="voiceSave('lang',this.value)"><option value="ur-PK">Urdu (Pakistan)</option><option value="en-IN">English (India)</option><option value="auto">Auto</option></select>
-<label><input id="voiceAuto" type="checkbox" onchange="voiceSave('auto',this.checked)"> Bolne ke baad khud bhejein</label>
-<label><input id="voiceReply" type="checkbox" onchange="voiceSave('reply',this.checked)"> Jawab awaz mein sunayein</label>
-<label for="voiceRate">Awaz ki raftaar <span id="voiceRateVal">1.0×</span></label><input id="voiceRate" type="range" min=".7" max="1.3" step=".1" value="1" onchange="voiceSave('rate',+this.value)" oninput="document.getElementById('voiceRateVal').textContent=(+this.value).toFixed(1)+'×'">
-<label for="voiceChoice">Phone ki awazein</label><select id="voiceChoice" onchange="voiceSave('voice',this.value)"><option value="">Default voice</option></select><p class="mut">Available awazein phone aur browser par munhasir hain.</p></div>
-<div class="card"><h2>Alert</h2><p class="mut">${perm==="granted"?(R.subs?"Is phone par alert on hain ✓":"Ijazat mil gayi, lekin phone abhi juda nahi. Neeche button dabayein."):perm==="denied"?"Alert blocked hain. Chrome ke site settings mein Notifications allow karein.":"Alert abhi on nahi."}</p><button class="p" onclick="enablePush()">${R.subs?"Alert dobara jodein":"Alert on karein"}</button><button onclick="testPush()">Test alert bhejein</button>
-  <label style="display:block;margin-top:14px">Subah ka khulasa (aaj ke kaam) kitne baje</label><select id="dh" onchange="setDigest(this.value)">${[6,7,8,9,10].map(h=>`<option value="${h}" ${h===(R.dh||8)?"selected":""}>${h}:00 AM</option>`).join("")}</select></div>
-  <div class="card"><h2>Install</h2>${ip?`<button class="p" onclick="ip.prompt()">App install karein</button>`:`<p class="mut">Chrome menu ⋮ → Add to Home screen / Install app. Alert ke liye install karna behtar hai.</p>`}</div>
-  <div class="card"><h2>Mehfooz</h2><button onclick="expChat()">Baat-cheet export karein</button><button onclick="if(confirm('Baat-cheet saaf karein? (kaam aur yaad mehfooz rahenge)')){msgs=[];W('as_msgs',[]);go('chat')}">Baat-cheet saaf karein</button></div>
-  <div class="card"><h2>Connection</h2><p class="mut">${esc(cfg.url)}</p><button class="d" onclick="if(confirm('Is phone se connection hata dein?')){localStorage.removeItem('as_cfg');location.reload()}">Connection hatayein</button></div>
-  <p class="mut">Ye app aap ke WhatsApp ya calls nahi dekh sakti. Baat-cheet is phone ke browser mein, aur kaam/yaadasht aap ke apne Cloudflare account mein rehti hain.</p>`}
+function vSet(){
+ const perm="Notification"in window?Notification.permission:"na";
+ $("#v").innerHTML=`<span class="eyebrow">AAPKI MARZI</span><h1>Settings</h1>
+ <section class="card voice-settings"><h2>Awaaz</h2>
+ <label for="voiceLang">Bolne ki zubaan</label><select id="voiceLang" onchange="voiceSave('lang',this.value)"><option value="ur-PK">Urdu (Pakistan)</option><option value="en-IN">English (India)</option><option value="auto">Auto</option></select>
+ <label class="checklabel" for="voiceAuto"><input id="voiceAuto" type="checkbox" onchange="voiceSave('auto',this.checked)"> Bolne ke baad khud bhejein</label>
+ <label class="checklabel" for="voiceReply"><input id="voiceReply" type="checkbox" onchange="voiceSave('reply',this.checked)"> Jawab awaz mein sunayein</label>
+ <label for="voiceRate">Awaz ki raftaar <span id="voiceRateVal">1.0×</span></label><input id="voiceRate" type="range" min=".7" max="1.3" step=".1" value="1" onchange="voiceSave('rate',+this.value)" oninput="document.getElementById('voiceRateVal').textContent=(+this.value).toFixed(1)+'×'">
+ <label for="voiceChoice">Phone ki awazein</label><select id="voiceChoice" onchange="voiceSave('voice',this.value)"><option value="">Default voice</option></select><p class="mut">Available awazein phone aur browser par munhasir hain.</p></section>
+ <section class="card"><h2>Alert</h2><p class="mut">${perm==="granted"?(R.subs?"Is phone par alert on hain ✓":"Ijazat mil gayi, lekin phone abhi juda nahi. Neeche button dabayein."):perm==="denied"?"Alert blocked hain. Chrome ke site settings mein Notifications allow karein.":"Alert abhi on nahi."}</p><button type="button" class="p" onclick="enablePush()">${R.subs?"Alert dobara jodein":"Alert on karein"}</button><button type="button" onclick="testPush()">Test alert bhejein</button>
+ <label for="dh" style="margin-top:19px">Subah ka khulasa (aaj ke kaam) kitne baje</label><select id="dh" onchange="setDigest(this.value)">${[6,7,8,9,10].map(h=>`<option value="${h}" ${h===(R.dh||8)?"selected":""}>${h}:00 AM</option>`).join("")}</select></section>
+ <section class="card"><h2>Install</h2>${ip?`<button type="button" class="p" onclick="ip.prompt()">App install karein</button>`:`<p class="mut">Chrome menu ⋮ → Add to Home screen / Install app. Alert ke liye install karna behtar hai.</p>`}</section>
+ <section class="card"><h2>Mehfooz</h2><button type="button" onclick="expChat()">Baat-cheet export karein</button><button type="button" onclick="showConfirm('clear-chat','Baat-cheet saaf karein? (kaam aur yaad mehfooz rahenge)',clearChat)">Baat-cheet saaf karein</button><div id="confirm-clear-chat"></div></section>
+ <section class="card"><h2>Connection</h2><p class="mut">${esc(cfg.url)}</p><button type="button" class="d" onclick="showConfirm('disconnect','Is phone se connection hata dein?',disconnect)">Connection hatayein</button><div id="confirm-disconnect"></div></section>
+ <p class="mut">Ye app aap ke WhatsApp ya calls nahi dekh sakti. Baat-cheet is phone ke browser mein, aur kaam/yaadasht aap ke apne Cloudflare account mein rehti hain.</p>`
+}
+function showConfirm(id,message,action){
+ const host=id.startsWith("task-")?document.querySelector('.task[data-id="'+id.slice(5)+'"]'):document.getElementById("confirm-"+id);
+ if(!host)return;
+ const previous=host.querySelector(".confirm-row");if(previous)previous.remove();
+ const box=document.createElement("div");box.className="confirm-row";box.setAttribute("role","group");box.setAttribute("aria-label",message);
+ const yes=document.createElement("button"),no=document.createElement("button");
+ yes.type="button";no.type="button";yes.className="d";yes.textContent="Haan, hata dein";no.textContent="Nahi";
+ yes.onclick=async()=>{yes.disabled=true;try{await action()}finally{box.remove()}};
+ no.onclick=()=>box.remove();box.append(yes,no);host.appendChild(box);no.focus()
+}
+function clearChat(){msgs=[];W("as_msgs",[]);go("chat")}
+function disconnect(){
+ localStorage.removeItem("as_cfg");cfg=null;R={tasks:[],memory:[],subs:0,vapid:""};
+ $("#app").classList.add("hidden");$("#nav").classList.add("hidden");$("#cmp").classList.add("hidden");$("#sk").value="";$("#setup").classList.remove("hidden")
+}
 async function setDigest(h){try{const j=await api("/api/settings",{digestHour:+h});R.dh=j.digestHour;toast("Mehfooz ✓")}catch(e){toast(e.message)}}
 function expChat(){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(msgs,null,2)],{type:"application/json"}));a.download="assistant-chat-"+today()+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),60000)}
-// ---------- setup / boot ----------
-async function doSetup(){const url=$("#su").value.trim(),key=$("#sk").value.trim();$("#se").textContent="";
-  if(!/^https:\/\/\S+$/.test(url)||!key){$("#se").textContent="Address (https://…) aur key dono likhein";return}
-  cfg={url,key};$("#sb").textContent="Jaanch rahi hai…";
-  try{await api("/api/state");W("as_cfg",cfg);$("#setup").classList.add("hidden");start()}catch(e){cfg=null;$("#se").textContent=e.message==="Failed to fetch"?"Worker tak nahi pahunch saka, address check karein":e.message}
-  $("#sb").textContent="Jodein"}
-async function start(){$("#app").classList.remove("hidden");$("#nav").classList.remove("hidden");draw();
-  try{await api("/api/state");draw()}catch(e){toast(e.message)}resync()}
+async function doSetup(){
+ const url=$("#su").value.trim(),key=$("#sk").value.trim();$("#se").textContent="";
+ if(!/^https:\/\/\S+$/.test(url)||!key){$("#se").textContent="Address (https://…) aur key dono likhein";return}
+ cfg={url,key};const b=$("#sb");b.disabled=true;b.textContent="Jaanch rahi hai…";
+ try{await api("/api/state");W("as_cfg",cfg);$("#setup").classList.add("hidden");start()}catch(e){cfg=null;$("#se").textContent=e.message==="Failed to fetch"?"Worker tak nahi pahunch saka, address check karein":e.message}
+ b.disabled=false;b.textContent="Jodein"
+}
+async function start(){
+ $("#app").classList.remove("hidden");$("#nav").classList.remove("hidden");draw();
+ try{await api("/api/state");draw()}catch(e){toast(e.message)}resync()
+}
 addEventListener("beforeinstallprompt",e=>{e.preventDefault();ip=e});
 document.addEventListener("visibilitychange",()=>{if(!document.hidden&&cfg)api("/api/state").then(()=>{if(tab!=="chat"||!busy)draw()}).catch(()=>{})});
 $("#in").addEventListener("input",fit);
 $("#in").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey&&!matchMedia("(pointer:coarse)").matches){e.preventDefault();send()}});
-
-// Voice feature additions
+// ---------- voice ----------
 const VKEY={lang:"ma_voice_lang",auto:"ma_voice_auto_send",reply:"ma_voice_reply",rate:"ma_voice_rate",voice:"ma_voice_choice"};
 let vr=null,vl=false,vs=!!(window.SpeechRecognition||window.webkitSpeechRecognition),tts=!!(window.speechSynthesis&&window.SpeechSynthesisUtterance);
 function vget(k,d){try{const x=localStorage.getItem(VKEY[k]);return x===null?d:JSON.parse(x)}catch(e){return d}}
 function voiceSave(k,v){try{localStorage.setItem(VKEY[k],JSON.stringify(v))}catch(e){}}
 function vlang(){let x=vget("lang","ur-PK");return x==="auto"?(navigator.language||"ur-PK"):x}
-function vpopulate(){let e=document.getElementById("voiceChoice");if(!e||!tts)return;let chosen=vget("voice","");e.innerHTML='<option value="">Default voice</option>'+speechSynthesis.getVoices().map(v=>`<option value="${esc(v.voiceURI)}">${esc(v.name)} (${esc(v.lang)})</option>`).join("");e.value=chosen}
-function vsettings(){let set=(id,v)=>{let e=document.getElementById(id);if(e)e.value=v},check=(id,v)=>{let e=document.getElementById(id);if(e)e.checked=!!v};set("voiceLang",vget("lang","ur-PK"));check("voiceAuto",vget("auto",false));check("voiceReply",vget("reply",false));set("voiceRate",vget("rate",1));let r=document.getElementById("voiceRateVal");if(r)r.textContent=(+vget("rate",1)).toFixed(1)+"×";vpopulate()}
-function toggleVoice(){if(!vs){toast("Is browser mein mic support nahi karta");return}if(vl){try{vr.stop()}catch(e){}return}let C=window.SpeechRecognition||window.webkitSpeechRecognition;vr=new C();vr.lang=vlang();vr.interimResults=true;let final="";
-vr.onstart=()=>{vl=true;document.getElementById("voiceBtn")?.classList.add("listening");toast("Sun rahi hoon…")};
-vr.onresult=e=>{let interim="";for(let i=e.resultIndex;i<e.results.length;i++){let t=e.results[i][0].transcript;if(e.results[i].isFinal)final+=t;else interim+=t}let el=document.getElementById("in");if(el){el.value=(final+interim).trim();fit()}};
-vr.onerror=e=>{vl=false;document.getElementById("voiceBtn")?.classList.remove("listening");toast(["not-allowed","service-not-allowed"].includes(e.error)?"Mic ki ijazat nahi mili. Browser settings mein microphone allow karein.":"Mic mein masla hua. Dobara koshish karein.")};
-vr.onend=()=>{vl=false;document.getElementById("voiceBtn")?.classList.remove("listening");let el=document.getElementById("in");if(el&&final.trim()){el.value=final.trim();fit();if(vget("auto",false))send()}};
-try{vr.start()}catch(e){toast("Mic shuru nahi ho saka. Dobara koshish karein.")}}
-function vclean(t){return String(t||"").replace(/```[\s\S]*?```/g," ").replace(/`([^`]+)`/g,"$1").replace(/^\s{0,3}#{1,6}\s+/gm,"").replace(/^\s*[-*+]\s+/gm,"").replace(/[*_~>#]/g,"").replace(/\[([^\]]+)\]\([^)]+\)/g,"$1").replace(/\s+/g," ").trim()}
-function speakText(t){if(!tts){toast("Is browser mein awaz support nahi karta");return}let text=vclean(t);if(!text)return;speechSynthesis.cancel();let stop=document.getElementById("voiceStop");if(stop)stop.classList.remove("hidden");let u=new SpeechSynthesisUtterance(text);u.lang=vlang();u.rate=+vget("rate",1)||1;let v=speechSynthesis.getVoices().find(x=>x.voiceURI===vget("voice",""));if(v)u.voice=v;u.onend=u.onerror=()=>{if(stop)stop.classList.add("hidden")};speechSynthesis.speak(u)}
+function vpopulate(){
+ let e=document.getElementById("voiceChoice");if(!e||!tts)return;
+ let chosen=vget("voice","");e.innerHTML='<option value="">Default voice</option>'+speechSynthesis.getVoices().map(v=>`<option value="${esc(v.voiceURI)}">${esc(v.name)} (${esc(v.lang)})</option>`).join("");e.value=chosen
+}
+function vsettings(){
+ let set=(id,v)=>{let e=document.getElementById(id);if(e)e.value=v},check=(id,v)=>{let e=document.getElementById(id);if(e)e.checked=!!v};
+ set("voiceLang",vget("lang","ur-PK"));check("voiceAuto",vget("auto",false));check("voiceReply",vget("reply",false));set("voiceRate",vget("rate",1));
+ let r=document.getElementById("voiceRateVal");if(r)r.textContent=(+vget("rate",1)).toFixed(1)+"×";vpopulate()
+}
+function toggleVoice(){
+ if(!vs){toast("Is browser mein mic support nahi karta");return}
+ if(vl){try{vr.stop()}catch(e){}return}
+ let C=window.SpeechRecognition||window.webkitSpeechRecognition;vr=new C();vr.lang=vlang();vr.interimResults=true;let final="";
+ vr.onstart=()=>{vl=true;document.getElementById("voiceBtn")?.classList.add("listening");toast("Sun rahi hoon…")};
+ vr.onresult=e=>{let interim="";for(let i=e.resultIndex;i<e.results.length;i++){let t=e.results[i][0].transcript;if(e.results[i].isFinal)final+=t;else interim+=t}let el=document.getElementById("in");if(el){el.value=(final+interim).trim();fit()}};
+ vr.onerror=e=>{vl=false;document.getElementById("voiceBtn")?.classList.remove("listening");toast(["not-allowed","service-not-allowed"].includes(e.error)?"Mic ki ijazat nahi mili. Browser settings mein microphone allow karein.":"Mic mein masla hua. Dobara koshish karein.")};
+ vr.onend=()=>{vl=false;document.getElementById("voiceBtn")?.classList.remove("listening");let el=document.getElementById("in");if(el&&final.trim()){el.value=final.trim();fit();if(vget("auto",false))send()}};
+ try{vr.start()}catch(e){toast("Mic shuru nahi ho saka. Dobara koshish karein.")}
+}
+function vclean(t){return String(t||"").replace(/```[\s\S]*?```/g," ").replace(/`([^`]+)`/g,"$1").replace(/^\s{0,3}#{1,6}\s+/gm,"").replace(/^\s*[-*+]\s+/gm,"").replace(/\[([^\]]+)\]\([^)]+\)/g,"$1").replace(/[*_~>#]/g,"").replace(/\s+/g," ").trim()}
+function speakText(t){
+ if(!tts){toast("Is browser mein awaz support nahi karta");return}
+ let text=vclean(t);if(!text)return;speechSynthesis.cancel();
+ let stop=document.getElementById("voiceStop");if(stop)stop.classList.remove("hidden");
+ let u=new SpeechSynthesisUtterance(text);u.lang=vlang();u.rate=+vget("rate",1)||1;
+ let v=speechSynthesis.getVoices().find(x=>x.voiceURI===vget("voice",""));if(v)u.voice=v;
+ u.onend=u.onerror=()=>{if(stop)stop.classList.add("hidden")};speechSynthesis.speak(u)
+}
 function speakMsg(i){if(msgs[i]&&msgs[i].role==="ai"&&!msgs[i].err)speakText(msgs[i].text)}
 function stopVoice(){if(tts)speechSynthesis.cancel();if(vl&&vr)try{vr.stop()}catch(e){}let b=document.getElementById("voiceStop");if(b)b.classList.add("hidden");toast("Awaz rok di")}
-function voiceInit(){let b=document.getElementById("voiceBtn");if(!vs&&b)b.classList.add("hidden");if(!vs&&!tts)toast("Is browser mein mic ya awaz support nahi karta");if(tts){speechSynthesis.onvoiceschanged=vpopulate;vpopulate()}}
-const drawVoiceOriginal=draw;draw=function(){drawVoiceOriginal();if(tab==="settings")vsettings()};
-const sendVoiceOriginal=send;send=async function(){await sendVoiceOriginal();if(vget("reply",false)&&msgs.length){let m=msgs[msgs.length-1];if(m&&m.role==="ai"&&!m.err)speakText(m.text)}};
+function voiceInit(){
+ let b=document.getElementById("voiceBtn");if(!vs&&b)b.classList.add("hidden");
+ if(!vs&&!tts)toast("Is browser mein mic ya awaz support nahi karta");
+ if(tts){speechSynthesis.onvoiceschanged=vpopulate;vpopulate()}
+}
 voiceInit();
-
 applyTheme();
 if(cfg&&cfg.url&&cfg.key)start();else $("#setup").classList.remove("hidden");
 if("serviceWorker"in navigator&&location.protocol!=="file:")navigator.serviceWorker.register("./sw.js").catch(()=>{});
-</script></body></html>
+</script>
+</body></html>

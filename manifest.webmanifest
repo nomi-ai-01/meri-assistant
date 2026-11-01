@@ -1,10 +1,1 @@
-{
-  "name": "Meri Assistant",
-  "short_name": "Assistant",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#F5F0E7",
-  "theme_color": "#F5F0E7",
-  "icons": [{"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}]
-}
+{"name":"Meri Assistant","short_name":"Assistant","description":"Meri personal assistant","start_url":"./","scope":"./","display":"standalone","orientation":"portrait","background_color":"#17121a","theme_color":"#17121a","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
