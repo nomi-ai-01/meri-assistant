@@ -190,11 +190,15 @@ async function askGemini(env, sys, contents) {
     for (const useSchema of [true, false]) {
       const gc = { responseMimeType: "application/json", maxOutputTokens: 8192, temperature: 0.7 };
       if (useSchema) gc.responseSchema = SCHEMA;
-      const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
-        method: "POST",
-        headers: { "content-type": "application/json", "x-goog-api-key": env.GEMINI_API_KEY },
-        body: JSON.stringify({ systemInstruction: { parts: [{ text: sys }] }, contents, generationConfig: gc }),
-      });
+      let r;
+      try {
+        r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
+          method: "POST",
+          headers: { "content-type": "application/json", "x-goog-api-key": env.GEMINI_API_KEY },
+          body: JSON.stringify({ systemInstruction: { parts: [{ text: sys }] }, contents, generationConfig: gc }),
+          signal: AbortSignal.timeout(22000),
+        });
+      } catch (e) { last = `${m}: der lag gayi ya network masla`; break; }
       if (r.ok) {
         const j = await r.json();
         const text = (j.candidates?.[0]?.content?.parts || []).map((p) => p.text || "").join("");
