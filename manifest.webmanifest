@@ -1,1 +1,1 @@
-{"name":"Meri Assistant","short_name":"Assistant","start_url":"./","scope":"./","display":"standalone","background_color":"#FFF6F9","theme_color":"#FFF6F9","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]}
+{"name":"Meri Assistant","short_name":"Assistant","start_url":"./","scope":"./","display":"standalone","background_color":"#FBF6EF","theme_color":"#FBF6EF","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]}
