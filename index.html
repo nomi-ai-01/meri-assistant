@@ -1,0 +1,160 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content"><meta name="theme-color" content="#FFF6F9"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="icon.svg"><title>Meri Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF6F9;--bg2:#F3E7F6;--card:#fff;--inp:#fff;--ink:#3A2434;--mut:#6E5566;--rose:#D4588A;--rt:#A82F66;--fill:#BE3D78;--soft:#FBE8F1;--lav:#8F6FD1;--bd:#EED8E6;--ibd:#CDA6BE;--al-bg:#FDE7E5;--al-bd:#D93025;--al-tx:#A31D14;--err:#B3261E;--me:#BE3D78;--ai:#fff;--sh:0 8px 30px rgba(190,61,120,.12)}
+body[data-t=dark]{color-scheme:dark;--bg:#170F18;--bg2:#26172A;--card:#2F2033;--inp:#1E1322;--ink:#FFF6FA;--mut:#E0CCDB;--rose:#E0679A;--rt:#FF9FC6;--soft:#4A2D4F;--lav:#C3A6F2;--bd:#55395C;--ibd:#8A6491;--al-bg:#4A1A1E;--al-bd:#FF6B5E;--al-tx:#FFD9D5;--err:#FF8A80;--ai:#34243A;--sh:0 8px 30px rgba(0,0,0,.35)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font-family:"DM Sans",system-ui,sans-serif;color:var(--ink);background:linear-gradient(160deg,var(--bg),var(--bg2));background-attachment:fixed;min-height:100vh;padding-bottom:84px}
+.hidden{display:none!important}.wrap{max-width:560px;margin:0 auto;padding:16px}
+h1,h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;margin:.1em 0;font-variant-numeric:lining-nums}h1{font-size:32px;line-height:1.1}h2{font-size:22px}
+small,.eb{color:var(--rt);font-size:12px;font-weight:700;letter-spacing:.08em}.mut{color:var(--mut);font-size:14px;line-height:1.5}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:16px;margin:12px 0;box-shadow:var(--sh)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{border:0;border-radius:999px;padding:13px 18px;background:var(--soft);cursor:pointer;width:100%;margin-top:10px;font-weight:600}
+button.p{background:linear-gradient(135deg,#B3306E,#D0508F);color:#fff;box-shadow:0 6px 18px rgba(190,61,120,.3)}button.d{background:#C0392B;color:#fff}button.q{background:transparent;color:var(--mut)}
+.round{width:42px;height:42px;padding:0;margin:0;display:inline-flex;align-items:center;justify-content:center;flex:none}
+input,select,textarea{width:100%;padding:13px 14px;border-radius:14px;border:1.5px solid var(--ibd);background:var(--inp);margin:6px 0 12px}
+input[type=checkbox]{accent-color:var(--fill)}
+label{font-size:14px;font-weight:600}.row{display:flex;gap:10px}.row>*{flex:1}.row.fr{align-items:flex-end}
+.top{display:flex;justify-content:space-between;align-items:center;padding:4px 0}
+.brand{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:700}.brand i{font-style:normal;background:var(--fill);color:#fff;border-radius:10px;padding:2px 8px;font-size:16px;margin-right:6px}
+svg.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.alert{background:var(--al-bg);border:1.5px solid var(--al-bd);color:var(--al-tx);padding:12px 14px;border-radius:16px;margin:10px 0;font-weight:700;display:flex;gap:10px;align-items:flex-start;cursor:pointer}.alert:before{content:"\26A0";font-size:18px;line-height:1.3}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:var(--card);border-top:1px solid var(--bd);padding:6px 4px calc(6px + env(safe-area-inset-bottom));z-index:20}
+nav button{background:transparent;width:auto;flex:1;margin:0;padding:8px 2px;border-radius:14px;font-size:11px;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:3px}nav button.a{color:var(--rt)}nav button.a svg{stroke-width:2.4}
+.msg{display:flex;flex-direction:column;margin:10px 0}.msg.me{align-items:flex-end}.msg.ai{align-items:flex-start}
+.bub{max-width:88%;padding:11px 14px;border-radius:20px;line-height:1.55;font-size:15px;word-wrap:break-word;overflow-wrap:anywhere}
+.me .bub{background:var(--me);color:#fff;border-bottom-right-radius:6px;white-space:pre-wrap}.ai .bub{background:var(--ai);border:1px solid var(--bd);border-bottom-left-radius:6px;box-shadow:var(--sh)}
+.bub p{margin:.3em 0}.bub h3{font-size:16px;margin:.7em 0 .2em}.bub ul,.bub ol{margin:.3em 0;padding-left:20px}.err .bub{border-color:var(--err);color:var(--err)}
+.acts{display:flex;gap:6px;margin-top:6px}.acts button{width:auto;margin:0;padding:6px 12px;font-size:12px;background:var(--soft);color:var(--ink)}
+.tag{display:inline-block;margin-top:6px;padding:6px 11px;border-radius:999px;background:var(--soft);color:var(--rt);font-size:12px;font-weight:700}
+.typing{display:inline-flex;gap:5px;padding:4px 2px}.typing i{width:7px;height:7px;border-radius:50%;background:var(--rose);animation:b 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}@keyframes b{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+#cmp{position:fixed;left:0;right:0;bottom:calc(62px + env(safe-area-inset-bottom));z-index:15;background:linear-gradient(transparent,var(--bg) 35%);padding:14px 12px 8px}
+#cmp div{max-width:560px;margin:0 auto;display:flex;gap:8px;align-items:flex-end}
+#cmp textarea{margin:0;resize:none;max-height:130px;border-radius:22px;padding:12px 16px}#cmp button{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.chip{padding:9px 14px;border-radius:999px;background:var(--soft);font-size:14px;cursor:pointer;font-weight:500;width:auto;margin:0}
+.task{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--bd)}.task:last-child{border:0}
+.task .ck{width:26px;height:26px;border-radius:50%;border:2px solid var(--ibd);background:transparent;padding:0;margin:0;flex:none;color:#fff;font-size:15px;line-height:1}.task.done .ck{background:var(--fill);border-color:var(--fill)}
+.task .tt{flex:1;min-width:0}.task.done .tt b{text-decoration:line-through;opacity:.6}.task b{display:block;overflow-wrap:anywhere}
+.task .x{width:34px;height:34px;padding:0;margin:0;background:transparent;color:var(--mut);font-size:20px}.late{color:var(--err);font-weight:700}
+.pan{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(160deg,var(--bg),var(--bg2));overflow:auto}.pan .card{width:100%;max-width:420px}
+#toast{position:fixed;bottom:150px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;opacity:0;transition:.3s;pointer-events:none;z-index:99;max-width:90%;font-size:14px}#toast.on{opacity:1}
+</style></head><body>
+<div id="setup" class="pan hidden"><div class="card"><div class="brand"><i>MA</i>Meri Assistant</div><h2 style="margin-top:10px">Pehli dafa setup</h2><p class="mut">Cloudflare Worker ka address aur apni app key yahan likhein (SETUP.md mein bataya gaya hai).</p><label>Worker address</label><input id="su" placeholder="https://meri-assistant.xxxx.workers.dev" autocapitalize="off" autocorrect="off" inputmode="url"><label>App key</label><input id="sk" type="password" autocapitalize="off" autocorrect="off"><p id="se" style="color:var(--err);min-height:1.3em;font-size:14px;margin:0"></p><button class="p" id="sb" onclick="doSetup()">Jodein</button></div></div>
+<div id="app" class="wrap hidden"><div class="top"><div class="brand"><i>MA</i>Meri Assistant</div><button class="round" onclick="toggleTheme()" aria-label="theme"><svg class="ic" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button></div><div id="strip"></div><div id="v"></div></div>
+<div id="cmp" class="hidden"><div><textarea id="in" rows="1" placeholder="Kuch bhi likhein…" maxlength="4000"></textarea><button class="round p" id="send" onclick="send()" aria-label="send"><svg class="ic" viewBox="0 0 24 24" style="stroke:#fff"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button></div></div>
+<nav id="nav" class="hidden"></nav><div id="toast"></div>
+<script>
+const $=s=>document.querySelector(s);
+const J=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}};
+const W=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+let cfg=J("as_cfg",null),msgs=J("as_msgs",[]),R={tasks:[],memory:[],subs:0,vapid:""},tab="chat",busy=false,ip=null,theme=J("as_theme","auto");
+const DAYS=["Itwaar","Peer","Mangal","Budh","Jumeraat","Jumma","Hafta"],MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const P=s=>{const[a,b,c]=s.split("-").map(Number);return new Date(a,b-1,c,12)};
+const today=()=>iso(new Date());
+const dd=(a,b)=>Math.round((P(b)-P(a))/864e5);
+const fd=s=>{const d=P(s);return DAYS[d.getDay()]+", "+d.getDate()+" "+MON[d.getMonth()]};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function toast(m){const e=$("#toast");e.textContent=m;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),2800)}
+function applyTheme(){const x=theme==="auto"?(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"):theme;document.body.dataset.t=x;const m=document.querySelector("meta[name=theme-color]");if(m)m.content=x==="dark"?"#170F18":"#FFF6F9"}
+function toggleTheme(){theme=document.body.dataset.t==="dark"?"light":"dark";W("as_theme",theme);applyTheme()}
+async function api(path,body){
+  const r=await fetch(cfg.url.replace(/\/+$/,"")+path,{method:body?"POST":"GET",headers:{"x-app-key":cfg.key,"content-type":"application/json"},body:body?JSON.stringify({...body,tzOffset:-new Date().getTimezoneOffset()}):undefined});
+  let j;try{j=await r.json()}catch(e){j={error:"Server ka jawab samajh nahi aaya ("+r.status+")"}}
+  if(!r.ok||j.error)throw new Error(j.error||("Masla "+r.status));
+  if(j.tasks){R.tasks=j.tasks;R.memory=j.memory;R.subs=j.subs;R.vapid=j.vapid;R.dh=j.dh}
+  return j}
+// ---------- markdown ----------
+function md(t){const inl=s=>esc(s).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/(^|[\s(])\*(?!\s)(.+?)\*(?=[\s).,!?]|$)/g,"$1<i>$2</i>").replace(/`([^`]+)`/g,"<code>$1</code>");
+  let out="",list=null;const close=()=>{if(list){out+="</"+list+">";list=null}};
+  for(const raw of String(t).split("\n")){const l=raw.trimEnd();let m;
+    if(m=/^\s*[-*•]\s+(.*)/.exec(l)){if(list!=="ul"){close();out+="<ul>";list="ul"}out+="<li>"+inl(m[1])+"</li>"}
+    else if(m=/^\s*\d+[.)]\s+(.*)/.exec(l)){if(list!=="ol"){close();out+="<ol>";list="ol"}out+="<li>"+inl(m[1])+"</li>"}
+    else{close();if(m=/^#{1,4}\s+(.*)/.exec(l))out+="<h3>"+inl(m[1])+"</h3>";else if(l.trim())out+="<p>"+inl(l)+"</p>"}}
+  close();return out}
+// ---------- chrome ----------
+const IC={chat:'<path d="M21 12a8 8 0 0 1-11.5 7.2L4 20l1-4.4A8 8 0 1 1 21 12z"/>',task:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',mem:'<path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>',set:'<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>'};
+const NAMES={chat:"Baat",task:"Kaam",mem:"Yaad",set:"Settings"};
+function pending(){return R.tasks.filter(t=>!t.done)}
+function strip(){const td=today(),p=pending(),late=p.filter(t=>t.date<td).length,now=p.filter(t=>t.date===td).length;
+  const off=tab!=="set"&&(!("Notification"in window)||Notification.permission!=="granted"||!R.subs);
+  $("#strip").innerHTML=(tab!=="task"&&(late||now)?`<div class="alert" onclick="go('task')"><span>${now?`Aaj ${now} kaam hai`:""}${now&&late?" · ":""}${late?`${late} kaam guzar chuka`:""}</span></div>`:"")+(off&&cfg?`<div class="card" style="padding:12px 14px;margin:10px 0;cursor:pointer" onclick="go('set')"><span class="mut"><b>Alert abhi on nahi.</b> Settings mein "Alert on karein" dabayein, tab hi phone par yaad dihani aayegi.</span></div>`:"")}
+function ui(){$("#nav").innerHTML=["chat","task","mem","set"].map(k=>`<button class="${tab===k?"a":""}" onclick="go('${k}')"><svg class="ic" viewBox="0 0 24 24">${IC[k]}</svg>${NAMES[k]}</button>`).join("");$("#cmp").classList.toggle("hidden",tab!=="chat");strip()}
+function go(k){tab=k;draw();scrollTo(0,0);if(k==="chat")bottom()}
+function draw(){ui();({chat:vChat,task:vTask,mem:vMem,set:vSet})[tab]()}
+const bottom=()=>setTimeout(()=>scrollTo(0,document.body.scrollHeight),30);
+// ---------- chat ----------
+const SUG=["Kal subah 9 baje doctor ke paas jana hai","Meri Urdu ki assignment likh do: 'Mehnat ka phal'","Mujhe ye yaad rakhna: meri behan ka naam Sana hai","Aaj mere kaam kya hain?"];
+function bubble(m,i){
+  if(m.role==="user")return `<div class="msg me"><div class="bub">${esc(m.text)}</div></div>`;
+  const tags=(m.added||[]).map(t=>`<span class="tag">✓ Kaam shaamil: ${esc(t.title)} · ${fd(t.date)}${t.time?" "+t.time:""}</span>`).concat((m.rem||[]).map(t=>`<span class="tag">♡ Yaad rakh liya: ${esc(t)}</span>`)).join("<br>");
+  return `<div class="msg ai${m.err?" err":""}"><div class="bub">${m.err?esc(m.text):md(m.text)}</div>${tags?`<div>${tags}</div>`:""}${m.err?"":`<div class="acts"><button onclick="cp(${i})">Copy</button><button onclick="dl(${i})">Download</button></div>`}</div>`}
+function vChat(){const v=$("#v");
+  v.innerHTML=`<div id="msgs">${msgs.length?msgs.map(bubble).join(""):`<div class="card"><h1>Assalam o Alaikum 🌸</h1><p class="mut">Main aap ki assistant hoon. Mujhe kaam, tareekhein aur apni baatein batayein, main yaad rakhungi aur waqt par alert dungi. Assignment ya koi bhi likhna ho to bas kehein.</p><div class="chips">${SUG.map((s,i)=>`<button class="chip" onclick="sug(${i})">${esc(s)}</button>`).join("")}</div></div>`}${busy?`<div class="msg ai"><div class="bub"><span class="typing"><i></i><i></i><i></i></span></div></div>`:""}</div><div style="height:120px"></div>`}
+function sug(i){$("#in").value=SUG[i];$("#in").focus()}
+async function send(){const el=$("#in"),text=el.value.trim();if(!text||busy)return;
+  msgs.push({role:"user",text});el.value="";fit();busy=true;W("as_msgs",msgs.slice(-120));draw();bottom();
+  const hist=msgs.filter(m=>!m.err).slice(-24).map(m=>({role:m.role,text:m.text}));
+  try{const j=await api("/api/chat",{history:hist});msgs.push({role:"ai",text:j.reply,added:j.added,rem:j.remembered});
+    if(j.added&&j.added.length)toast("Kaam shaamil ho gaya ✓")}
+  catch(e){msgs.push({role:"ai",text:"Maazrat, jawab nahi aaya: "+e.message,err:1})}
+  busy=false;msgs=msgs.slice(-120);W("as_msgs",msgs);draw();bottom()}
+function fit(){const e=$("#in");e.style.height="auto";e.style.height=Math.min(e.scrollHeight,130)+"px"}
+async function cp(i){const t=msgs[i].text;try{await navigator.clipboard.writeText(t)}catch(e){const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove()}toast("Copy ho gaya")}
+function dl(i){const h=`<html><head><meta charset="utf-8"><title>Meri Assistant</title></head><body style="font-family:Calibri,Arial;font-size:12pt">${md(msgs[i].text)}</body></html>`;
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿",h],{type:"application/msword"}));a.download="assistant-"+today()+".doc";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),60000);toast("Download shuru")}
+// ---------- tasks ----------
+function vTask(){const td=today(),by={late:[],today:[],tom:[],week:[],later:[],done:[]};
+  [...R.tasks].sort((a,b)=>(a.date+(a.time||"99:99")).localeCompare(b.date+(b.time||"99:99"))).forEach(t=>{const d=dd(td,t.date);
+    (t.done?by.done:d<0?by.late:d===0?by.today:d===1?by.tom:d<=7?by.week:by.later).push(t)});
+  const row=t=>`<div class="task${t.done?" done":""}"><button class="ck" onclick="tdone('${t.id}',${!t.done})" aria-label="done">${t.done?"✓":""}</button><div class="tt"><b>${esc(t.title)}</b><span class="mut ${!t.done&&t.date<td?"late":""}">${fd(t.date)}${t.time?" · "+t.time:""}</span></div><button class="x" onclick="trm('${t.id}')" aria-label="delete">×</button></div>`;
+  const sec=(n,a,c)=>a.length?`<div class="card"><h2 ${c?`class="late"`:""}>${n}</h2>${a.map(row).join("")}</div>`:"";
+  $("#v").innerHTML=`<small>AAPKE KAAM</small><h1>Kaam aur tareekhein</h1>${R.tasks.some(t=>!t.done)?"":`<p class="mut">Abhi koi kaam nahi. Neeche se shaamil karein ya "Baat" mein assistant ko bata dein.</p>`}${sec("Guzar chuke",by.late,1)}${sec("Aaj",by.today)}${sec("Kal",by.tom)}${sec("Is hafte",by.week)}${sec("Baad mein",by.later)}
+  <div class="card"><h2>Naya kaam</h2><label>Kaam</label><input id="nt" maxlength="200" placeholder="jaise: Assignment jama karani hai"><div class="row fr"><div><label>Tareekh</label><input id="nd" type="date" value="${td}"></div><div><label>Waqt (optional)</label><input id="ntm" type="time"></div></div><button class="p" onclick="tadd()">Shaamil karein</button></div>${by.done.length?`<details class="card"><summary><b>Mukammal (${by.done.length})</b></summary>${by.done.map(row).join("")}</details>`:""}`}
+async function tadd(){const title=$("#nt").value.trim(),date=$("#nd").value;if(!title||!date){toast("Kaam aur tareekh likhein");return}
+  try{await api("/api/task",{title,date,time:$("#ntm").value||""});toast("Shaamil ho gaya ✓");draw()}catch(e){toast(e.message)}}
+async function tdone(id,done){try{await api("/api/task/update",{id,done});draw()}catch(e){toast(e.message)}}
+async function trm(id){if(!confirm("Ye kaam hata dein?"))return;try{await api("/api/task/update",{id,remove:true});draw()}catch(e){toast(e.message)}}
+// ---------- memory ----------
+function vMem(){$("#v").innerHTML=`<small>MAIN YAAD RAKHTI HOON</small><h1>Aapki baatein</h1><div class="card">${R.memory.length?R.memory.map((m,i)=>`<div class="task"><div class="tt"><b style="font-weight:500">${esc(m)}</b></div><button class="x" onclick="mrm(${i})" aria-label="delete">×</button></div>`).join(""):`<p class="mut">Abhi kuch yaad nahi. "Baat" mein kahein: "ye yaad rakhna…"</p>`}</div><div class="card"><label>Khud likh kar yaad karwayein</label><input id="mi" maxlength="300" placeholder="jaise: Mujhe chai mein cheeni kam pasand hai"><button class="p" onclick="madd()">Yaad rakhein</button></div>`}
+async function madd(){const v=$("#mi").value.trim();if(!v)return;try{await api("/api/memory",{add:v});draw()}catch(e){toast(e.message)}}
+async function mrm(i){try{await api("/api/memory",{remove:i});draw()}catch(e){toast(e.message)}}
+// ---------- push ----------
+const u8=s=>{s=s.replace(/-/g,"+").replace(/_/g,"/");while(s.length%4)s+="=";return Uint8Array.from(atob(s),c=>c.charCodeAt(0))};
+async function enablePush(){
+  if(!("serviceWorker"in navigator)||!("PushManager"in window)||!("Notification"in window)){toast("Is browser mein alert support nahi");return}
+  try{const p=await Notification.requestPermission();if(p!=="granted"){toast("Alert ki ijazat nahi di gayi");return}
+    const reg=await navigator.serviceWorker.ready;let sub=await reg.pushManager.getSubscription();
+    if(sub){const k=sub.options&&sub.options.applicationServerKey;if(k&&btoa(String.fromCharCode(...new Uint8Array(k))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")!==R.vapid){await sub.unsubscribe();sub=null}}
+    if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:u8(R.vapid)});
+    await api("/api/subscribe",{sub:sub.toJSON()});toast("Alert on ho gaye ✓");draw()}catch(e){toast("Masla: "+e.message)}}
+async function testPush(){try{const j=await api("/api/test-push",{});toast(j.sent?"Test alert bhej diya ✓":"Koi device jura hua nahi, pehle alert on karein")}catch(e){toast(e.message)}}
+async function resync(){try{if(!("serviceWorker"in navigator)||!("Notification"in window)||Notification.permission!=="granted")return;const reg=await navigator.serviceWorker.ready,s=await reg.pushManager.getSubscription();if(s)await api("/api/subscribe",{sub:s.toJSON()})}catch(e){}}
+// ---------- settings ----------
+function vSet(){const perm="Notification"in window?Notification.permission:"na";
+  $("#v").innerHTML=`<small>AAPKI MARZI</small><h1>Settings</h1>
+  <div class="card"><h2>Alert</h2><p class="mut">${perm==="granted"?(R.subs?"Is phone par alert on hain ✓":"Ijazat mil gayi, lekin phone abhi juda nahi. Neeche button dabayein."):perm==="denied"?"Alert blocked hain. Chrome ke site settings mein Notifications allow karein.":"Alert abhi on nahi."}</p><button class="p" onclick="enablePush()">${R.subs?"Alert dobara jodein":"Alert on karein"}</button><button onclick="testPush()">Test alert bhejein</button>
+  <label style="display:block;margin-top:14px">Subah ka khulasa (aaj ke kaam) kitne baje</label><select id="dh" onchange="setDigest(this.value)">${[6,7,8,9,10].map(h=>`<option value="${h}" ${h===(R.dh||8)?"selected":""}>${h}:00 AM</option>`).join("")}</select></div>
+  <div class="card"><h2>Install</h2>${ip?`<button class="p" onclick="ip.prompt()">App install karein</button>`:`<p class="mut">Chrome menu ⋮ → Add to Home screen / Install app. Alert ke liye install karna behtar hai.</p>`}</div>
+  <div class="card"><h2>Mehfooz</h2><button onclick="expChat()">Baat-cheet export karein</button><button onclick="if(confirm('Baat-cheet saaf karein? (kaam aur yaad mehfooz rahenge)')){msgs=[];W('as_msgs',[]);go('chat')}">Baat-cheet saaf karein</button></div>
+  <div class="card"><h2>Connection</h2><p class="mut">${esc(cfg.url)}</p><button class="d" onclick="if(confirm('Is phone se connection hata dein?')){localStorage.removeItem('as_cfg');location.reload()}">Connection hatayein</button></div>
+  <p class="mut">Ye app aap ke WhatsApp ya calls nahi dekh sakti. Baat-cheet is phone ke browser mein, aur kaam/yaadasht aap ke apne Cloudflare account mein rehti hain.</p>`}
+async function setDigest(h){try{const j=await api("/api/settings",{digestHour:+h});R.dh=j.digestHour;toast("Mehfooz ✓")}catch(e){toast(e.message)}}
+function expChat(){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(msgs,null,2)],{type:"application/json"}));a.download="assistant-chat-"+today()+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),60000)}
+// ---------- setup / boot ----------
+async function doSetup(){const url=$("#su").value.trim(),key=$("#sk").value.trim();$("#se").textContent="";
+  if(!/^https:\/\/\S+$/.test(url)||!key){$("#se").textContent="Address (https://…) aur key dono likhein";return}
+  cfg={url,key};$("#sb").textContent="Jaanch rahi hai…";
+  try{await api("/api/state");W("as_cfg",cfg);$("#setup").classList.add("hidden");start()}catch(e){cfg=null;$("#se").textContent=e.message==="Failed to fetch"?"Worker tak nahi pahunch saka, address check karein":e.message}
+  $("#sb").textContent="Jodein"}
+async function start(){$("#app").classList.remove("hidden");$("#nav").classList.remove("hidden");draw();
+  try{await api("/api/state");draw()}catch(e){toast(e.message)}resync()}
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();ip=e});
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&cfg)api("/api/state").then(()=>{if(tab!=="chat"||!busy)draw()}).catch(()=>{})});
+$("#in").addEventListener("input",fit);
+$("#in").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey&&!matchMedia("(pointer:coarse)").matches){e.preventDefault();send()}});
+applyTheme();
+if(cfg&&cfg.url&&cfg.key)start();else $("#setup").classList.remove("hidden");
+if("serviceWorker"in navigator&&location.protocol!=="file:")navigator.serviceWorker.register("./sw.js").catch(()=>{});
+</script></body></html>
