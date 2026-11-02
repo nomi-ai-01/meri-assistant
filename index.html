@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
-<meta name="theme-color" content="#102c29">
+<meta name="theme-color" content="#f6f0e9">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg">
 <link rel="apple-touch-icon" href="icon.svg">
@@ -11,35 +11,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
- --bg:#102c29;--bg2:#173a35;--card:#1c403a;--input:#14342f;--ink:#f6f4ea;--mut:#c8d5cc;
- --accent:#eed9ad;--rose:#edc4c0;--fill:#356e60;--soft:#254b43;--gold:#e4ca99;
- --border:#527267;--iborder:#789588;--error:#ffc0b7;--alert-bg:#553b38;--alert-border:#db9991;
- --alert-text:#ffe3dd;--ai:#20453e;--bubble-ink:#ffffff;--shadow:0 18px 48px rgba(0,0,0,.19);
- --glow:rgba(228,202,153,.12);--focus:rgba(228,202,153,.22);--bubble-start:#397d6b;--bubble-end:#22574e;
-}
-body[data-t=light]{
- color-scheme:light;--bg:#f3f5f0;--bg2:#e9efea;--card:#fffefa;--input:#ffffff;--ink:#15362f;--mut:#536d62;
- --accent:#74603c;--rose:#9c6466;--fill:#17604e;--soft:#e9f0e8;--gold:#98794c;
- --border:#cbdad0;--iborder:#879f91;--error:#a63632;--alert-bg:#faece8;--alert-border:#aa625b;
- --alert-text:#75352f;--ai:#fffefa;--bubble-ink:#ffffff;--shadow:0 18px 48px rgba(28,67,52,.08);
- --glow:rgba(205,168,109,.13);--focus:rgba(23,96,78,.15);--bubble-start:#26725d;--bubble-end:#135343;
-}
-body[data-t=dark]{color-scheme:dark}
-body[data-accent=navy]{
- --bg:#142334;--bg2:#1d3041;--card:#23394a;--input:#192c3d;--ink:#f9f6f1;--mut:#d1d9de;
- --accent:#f0e8d8;--rose:#f0bdb3;--fill:#465e72;--soft:#2e4558;--gold:#dcb5a6;
- --border:#526a79;--iborder:#8095a0;--error:#ffc0b7;--alert-bg:#503b42;--alert-border:#d79696;
- --alert-text:#ffe1df;--ai:#263c4d;--bubble-ink:#ffffff;--glow:rgba(220,181,166,.12);
- --focus:rgba(220,181,166,.2);--bubble-start:#506f83;--bubble-end:#334d68;
-}
-body[data-accent=navy][data-t=light]{
- --bg:#f5f5f2;--bg2:#ebeef0;--card:#ffffff;--input:#ffffff;--ink:#1b3144;--mut:#526778;
- --accent:#70544b;--rose:#855254;--fill:#294b64;--soft:#e9edf0;--gold:#936b61;
- --border:#cbd4db;--iborder:#8296a5;--error:#a63632;--alert-bg:#faeae8;--alert-border:#ad6661;
- --alert-text:#75352f;--ai:#ffffff;--bubble-ink:#ffffff;--glow:rgba(186,145,133,.12);
- --focus:rgba(41,75,100,.16);--bubble-start:#426b83;--bubble-end:#284b65;
-}
+:root{--bg:#f6f0e9;--bg2:#eee3d9;--card:#fffaf5;--input:#fffdfa;--ink:#382923;--mut:#66554e;--accent:#765046;--rose:#9d6570;--fill:#765046;--soft:#f1e6de;--gold:#93764c;--border:#d9c9bc;--iborder:#aa9182;--error:#a33836;--alert-bg:#f8e9e4;--alert-border:#b77870;--alert-text:#71342f;--ai:#fffaf5;--bubble-ink:#fffaf5;--shadow:0 18px 52px rgba(61,37,30,.09);--glow:rgba(169,114,92,.11);--focus:rgba(147,118,76,.19);--bubble-start:#875a53;--bubble-end:#6a4240;--glass:rgba(255,250,245,.86)}
+body[data-t=dark]{color-scheme:dark;--bg:#241c1d;--bg2:#302426;--card:#332729;--input:#292023;--ink:#fff2e8;--mut:#dbc6bb;--accent:#efd3bc;--rose:#e5adb4;--fill:#805251;--soft:#443235;--gold:#e0c294;--border:#71565a;--iborder:#a18280;--error:#ffb6ac;--alert-bg:#56383a;--alert-border:#d39b92;--alert-text:#ffe2db;--ai:#382a2b;--bubble-ink:#fff7f2;--shadow:0 18px 52px rgba(0,0,0,.22);--glow:rgba(225,170,143,.09);--focus:rgba(224,194,148,.22);--bubble-start:#885959;--bubble-end:#694246;--glass:rgba(51,39,41,.92)}
+body[data-accent=burgundy]{--bg:#f8f4ed;--bg2:#eee6dd;--card:#fffdf8;--input:#fffdfa;--ink:#3a252b;--mut:#67515a;--accent:#713b4b;--rose:#945963;--fill:#713b4b;--soft:#f3e8e8;--gold:#967847;--border:#ddcdd0;--iborder:#ad9198;--bubble-start:#833e53;--bubble-end:#632e42;--glass:rgba(255,253,248,.9)}
+body[data-accent=burgundy][data-t=dark]{--bg:#27171d;--bg2:#341e27;--card:#3a2530;--input:#2e1d26;--ink:#fff2e9;--mut:#ddc7ca;--accent:#f1ccd1;--rose:#e4a7b2;--fill:#854e60;--soft:#50323e;--gold:#e2c695;--border:#74525e;--iborder:#a57e89;--bubble-start:#914e64;--bubble-end:#723e56;--glass:rgba(58,37,48,.93)}
+body[data-accent=sage]{--bg:#f3f4ee;--bg2:#e8ede4;--card:#fffef9;--input:#fffefa;--ink:#28392e;--mut:#506355;--accent:#49644e;--rose:#846b67;--fill:#49644e;--soft:#e9eee5;--gold:#877446;--border:#cad7c8;--iborder:#839b84;--bubble-start:#5d795e;--bubble-end:#3f6048;--glass:rgba(255,254,249,.9)}
+body[data-accent=sage][data-t=dark]{--bg:#1e2923;--bg2:#27372c;--card:#2d3c32;--input:#243229;--ink:#f4f4e9;--mut:#c8d9c8;--accent:#d3e7c8;--rose:#d8b6a9;--fill:#54735a;--soft:#3a5040;--gold:#ddca94;--border:#57705b;--iborder:#91aa91;--bubble-start:#5c8263;--bubble-end:#426249;--glass:rgba(45,60,50,.93)}
+body[data-accent=emerald]{--bg:#f3f5f0;--bg2:#e9efea;--card:#fffefa;--input:#fff;--ink:#15362f;--mut:#536d62;--accent:#48664e;--rose:#9c6466;--fill:#17604e;--soft:#e9f0e8;--gold:#806840;--border:#cbdad0;--iborder:#879f91;--bubble-start:#26725d;--bubble-end:#135343;--glass:rgba(255,254,250,.9)}
+body[data-accent=emerald][data-t=dark]{--bg:#102c29;--bg2:#173a35;--card:#1c403a;--input:#14342f;--ink:#f6f4ea;--mut:#c8d5cc;--accent:#eed9ad;--rose:#edc4c0;--fill:#356e60;--soft:#254b43;--gold:#e4ca99;--border:#527267;--iborder:#789588;--bubble-start:#397d6b;--bubble-end:#22574e;--glass:rgba(28,64,58,.93)}
+body[data-accent=navy]{--bg:#f5f5f2;--bg2:#ebeef0;--card:#fff;--input:#fff;--ink:#1b3144;--mut:#526778;--accent:#37546b;--rose:#855254;--fill:#294b64;--soft:#e9edf0;--gold:#826158;--border:#cbd4db;--iborder:#8296a5;--bubble-start:#426b83;--bubble-end:#284b65;--glass:rgba(255,255,255,.9)}
+body[data-accent=navy][data-t=dark]{--bg:#142334;--bg2:#1d3041;--card:#23394a;--input:#192c3d;--ink:#f9f6f1;--mut:#d1d9de;--accent:#f0e8d8;--rose:#f0bdb3;--fill:#465e72;--soft:#2e4558;--gold:#dcb5a6;--border:#526a79;--iborder:#8095a0;--bubble-start:#506f83;--bubble-end:#334d68;--glass:rgba(35,57,74,.93)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
 body{width:100%;min-height:100%;margin:0;padding-bottom:calc(196px + env(safe-area-inset-bottom));font-family:"DM Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
@@ -50,7 +31,7 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;line-hei
 h1{font-size:clamp(38px,9vw,53px);margin:8px 0 12px}h2{font-size:31px;margin:0 0 12px}h3{font-size:22px;margin:0 0 8px}
 .eyebrow{display:block;color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin:24px 0 8px}
 .mut{color:var(--mut);font-size:13px;line-height:1.7}.subtle{font-size:12px;color:var(--mut)}
-.card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:25px;padding:22px;margin:16px 0;box-shadow:var(--shadow);overflow:hidden}
+.card{position:relative;background:var(--glass);border:1px solid var(--border);border-radius:27px;padding:23px;margin:16px 0;box-shadow:var(--shadow);overflow:hidden;backdrop-filter:blur(18px)}
 .card:before{content:"";position:absolute;top:0;left:25px;width:30px;height:1px;background:var(--gold)}
 button,input,select,textarea{font:inherit;color:inherit}
 button{min-height:46px;width:100%;padding:12px 16px;margin-top:10px;border:1px solid transparent;border-radius:16px;background:var(--soft);font-size:13px;font-weight:600;cursor:pointer;transition:background .2s,border-color .2s,transform .2s,opacity .2s}
@@ -124,6 +105,15 @@ svg.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;str
 .confirm-row{display:flex;gap:8px;margin-top:8px;width:100%}.confirm-row button{flex:1}
 #voiceStop{position:fixed;right:17px;bottom:calc(170px + env(safe-area-inset-bottom));z-index:30;width:auto;border:1px solid var(--gold);border-radius:999px;background:var(--fill);color:var(--bubble-ink)}
 .choice-group{display:flex;flex-wrap:wrap;gap:8px}.choice-group button{width:auto;flex:1;min-width:90px;margin:0}.choice-group button.selected{border-color:var(--gold);background:var(--fill);color:var(--bubble-ink)}
+.bub,.task b,.memory-item p{font-size:calc(14px*var(--fz,1))}.mut{font-size:calc(13px*var(--fz,1))}
+.wave{max-width:680px;margin:0 auto 8px;display:flex;align-items:center;gap:4px;color:var(--accent);font-size:12px;padding:0 6px}
+.wave i{width:3px;height:8px;border-radius:2px;background:var(--gold);animation:wv 1s ease-in-out infinite}
+.wave i:nth-child(2){animation-delay:.12s}.wave i:nth-child(3){animation-delay:.24s}.wave i:nth-child(4){animation-delay:.36s}.wave i:nth-child(5){animation-delay:.48s}
+.wave span{margin-left:8px}@keyframes wv{50%{height:22px}}
+.mood{display:flex;align-items:center;gap:13px;padding:15px 19px}.mood:before{left:19px}.mood-symbol{font-size:30px;color:var(--gold);line-height:1}.mood p{margin:0}.mood .eyebrow{margin:0 0 4px}
+.priority-dot{display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;background:var(--gold);vertical-align:middle}.priority-dot.ordinary{background:var(--border)}
+.week-strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin:15px 0}.week-strip button{margin:0;padding:7px 2px;min-width:0;min-height:59px;border:1px solid var(--border);background:var(--card);font-size:11px}.week-strip button strong{display:block;font-size:16px}.week-strip button.selected{background:var(--fill);color:var(--bubble-ink);border-color:var(--gold)}
+.sparkles{position:fixed;inset:0;pointer-events:none;z-index:90}.sparkles span{position:absolute;left:var(--x);top:var(--y);width:5px;height:5px;border-radius:50%;background:var(--gold);animation:scatter 1s ease-out forwards}@keyframes scatter{to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.2)}}
 @media(max-width:420px){.wrap{padding-left:15px;padding-right:15px}.memory-grid{grid-template-columns:1fr}.brand{font-size:26px}}
 @media(max-width:380px){.row.fr{flex-direction:column;align-items:stretch;gap:0}}
 @media(min-width:700px){.wrap{padding-top:31px}.card{padding:25px}#cmp{bottom:95px}}
@@ -133,7 +123,7 @@ svg.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;str
 <body>
 <main id="setup" class="pan hidden" aria-label="Setup">
  <div class="card">
-  <div class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 35V13l16 18 16-18v22M34 9c3-4 6-3 8-6m-1 9 2 2m-2-2-2 2"/></svg></span>Meri Assistant</div>
+  <div class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M14 7h20a8 8 0 0 1 8 8v13a8 8 0 0 1-8 8H23l-9 6.5V36a8 8 0 0 1-8-8V15a8 8 0 0 1 8-8z"/><path d="M17 28V17l7 7.5L31 17v11"/><path d="M42 1v5m-2.5-2.5h5"/></svg></span>Meri Assistant</div>
   <h1 style="margin-top:15px">Pehli dafa setup</h1>
   <p class="mut">Cloudflare Worker ka address aur apni app key yahan likhein (SETUP.md mein bataya gaya hai).</p>
   <label for="su">Worker address</label>
@@ -144,14 +134,16 @@ svg.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;str
   <button type="button" id="sb" class="p" onclick="doSetup()">Jodein</button>
  </div>
 </main>
+<main id="lock" class="pan hidden" style="z-index:70" aria-label="App lock"><div class="card" style="text-align:center"><div class="brand" style="justify-content:center"><span class="mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M14 7h20a8 8 0 0 1 8 8v13a8 8 0 0 1-8 8H23l-9 6.5V36a8 8 0 0 1-8-8V15a8 8 0 0 1 8-8z"/><path d="M17 28V17l7 7.5L31 17v11"/><path d="M42 1v5m-2.5-2.5h5"/></svg></span>Meri Assistant</div><h2 style="margin-top:16px">App band hai</h2><p class="mut">Kholne ke liye apna PIN likhein.</p><label for="lockpin" class="sr-only">PIN</label><input id="lockpin" type="password" inputmode="numeric" maxlength="6" autocomplete="off" style="text-align:center;letter-spacing:.4em;font-size:20px"><p id="lockerr" role="alert" class="subtle" style="min-height:1.4em"></p><button type="button" class="p" onclick="unlock()">Kholein</button></div></main>
 <div id="app" class="wrap hidden">
  <header class="top">
-  <div class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 35V13l16 18 16-18v22M34 9c3-4 6-3 8-6m-1 9 2 2m-2-2-2 2"/></svg></span>Meri Assistant</div>
+  <div class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M14 7h20a8 8 0 0 1 8 8v13a8 8 0 0 1-8 8H23l-9 6.5V36a8 8 0 0 1-8-8V15a8 8 0 0 1 8-8z"/><path d="M17 28V17l7 7.5L31 17v11"/><path d="M42 1v5m-2.5-2.5h5"/></svg></span>Meri Assistant</div>
   <button type="button" class="round" onclick="toggleTheme()" aria-label="Theme badlein" title="Theme badlein"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
  </header>
  <main><div id="strip"></div><div id="v"></div></main>
 </div>
 <div id="cmp" class="hidden">
+ <div id="wave" class="wave hidden" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><span>Sun rahi hoon…</span></div>
  <div class="composer">
   <label for="in" class="sr-only">Paigham</label>
   <textarea id="in" rows="1" placeholder="Kuch bhi likhein…" maxlength="4000"></textarea>
@@ -167,7 +159,7 @@ const $=s=>document.querySelector(s);
 const J=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}};
 const W=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
 let cfg=J("as_cfg",null),msgs=J("as_msgs",[]),R={tasks:[],memory:[],subs:0,vapid:""},tab="chat",busy=false,ip=null,theme=J("as_theme","auto");
-let accent=J("ma_accent","emerald"),taskFilter="all",memoryQuery="";
+let fz=J("ma_font",1),accent=J("ma_accent","mocha"),taskFilter="all",memoryQuery="",weekDate="",name=J("ma_name","");
 const DAYS=["Itwaar","Peer","Mangal","Budh","Jumeraat","Jumma","Hafta"],MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 const P=s=>{const[a,b,c]=s.split("-").map(Number);return new Date(a,b-1,c,12)};
@@ -177,9 +169,12 @@ const fd=s=>{const d=P(s);return DAYS[d.getDay()]+", "+d.getDate()+" "+MON[d.get
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const illustration=kind=>kind==="chat"?'<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M13 18h42a9 9 0 0 1 9 9v23a9 9 0 0 1-9 9H31L17 69V59a9 9 0 0 1-9-9V27a9 9 0 0 1 9-9zM22 35h29M22 44h20M65 9v12m-6-6h12"/></svg>':kind==="task"?'<svg viewBox="0 0 80 80" aria-hidden="true"><rect x="15" y="10" width="50" height="60" rx="8"/><path d="m25 29 4 4 7-8m6 4h13M25 49l4 4 7-8m6 4h13"/></svg>':'<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M40 66S15 51 15 31a14 14 0 0 1 25-9 14 14 0 0 1 25 9C65 51 40 66 40 66zM30 35h20m-20 9h14"/></svg>';
 function toast(m){const e=$("#toast");e.textContent=m;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),2800)}
-function applyTheme(){const x=theme==="auto"?(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"):theme;document.body.dataset.t=x;document.body.dataset.accent=accent;const m=document.querySelector("meta[name=theme-color]");if(m)m.content=x==="dark"?(accent==="navy"?"#142334":"#102c29"):(accent==="navy"?"#f5f5f2":"#f3f5f0")}
+function applyTheme(){const x=theme==="auto"?(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"):theme;document.body.dataset.t=x;document.body.dataset.accent=accent;const m=document.querySelector("meta[name=theme-color]");if(m)m.content=getComputedStyle(document.body).getPropertyValue("--bg").trim()||"#f6f0e9"}
 function toggleTheme(){theme=document.body.dataset.t==="dark"?"light":"dark";W("as_theme",theme);applyTheme();if(tab==="set")draw()}
 function chooseTheme(x){theme=x;W("as_theme",theme);applyTheme();draw()}
+function applyFont(){document.documentElement.style.setProperty("--fz",fz)}
+function chooseFont(x){fz=x;W("ma_font",x);applyFont();draw()}
+function saveName(v){name=v.trim().slice(0,40);W("ma_name",name);toast("Mehfooz ✓")}
 function chooseAccent(x){accent=x;W("ma_accent",x);applyTheme();draw()}
 async function api(path,body){
  let r;try{r=await fetch(cfg.url.replace(/\/+$/,"")+path,{method:body?"POST":"GET",headers:{"x-app-key":cfg.key,"content-type":"application/json"},body:body?JSON.stringify({...body,tzOffset:-new Date().getTimezoneOffset()}):undefined,signal:AbortSignal.timeout(75000)})}catch(e){throw new Error(e.name==="TimeoutError"?"Bohat der lag gayi, dobara koshish karein":"Internet ya server tak nahi pahunch saki")}
@@ -210,19 +205,27 @@ function go(k){tab=k;draw();scrollTo(0,0);if(k==="chat")bottom()}
 function draw(){ui();({chat:vChat,task:vTask,mem:vMem,set:vSet})[tab]();if(tab==="set")vsettings()}
 const bottom=()=>setTimeout(()=>scrollTo(0,document.body.scrollHeight),30);
 const SUG=["Kal subah 9 baje doctor ke paas jana hai","Meri Urdu ki assignment likh do: 'Mehnat ka phal'","Mujhe ye yaad rakhna: meri behan ka naam Sana hai","Aaj mere kaam kya hain?"];
-const QUICK=["Naya kaam","Kuch yaad rakho","Aaj ke kaam","Assignment likho"];
-const QTEXT=["Mujhe ye naya kaam yaad dilana: ","Mujhe ye yaad rakhna: ","Aaj mere kaam kya hain?","Meri assignment likh do: "];
+const THOUGHTS=["Aaj chhoti si peshraft bhi qeemti hai.","Apne liye ek narm lamha zaroor nikalein.","Aahista chalna bhi aage barhna hai.","Aaj ka din nayi umeed le kar aaya hai.","Ek kaam, ek qadam, phir agla qadam.","Aap ki mehnat apna rang layegi.","Aaj apne aap se narmi se baat karein."];
+const QUICK=["Naya kaam","Kuch yaad rakho","Aaj ke kaam","Assignment likho","Email likho","Darkhwast likho","Message likho"];
+const QTEXT=["Mujhe ye naya kaam yaad dilana: ","Mujhe ye yaad rakhna: ","Aaj mere kaam kya hain?","Meri assignment likh do: ","Meri taraf se ek acha email likho: ","Ek darkhwast (application) likho: ","Ek chhota sa message likho: "];
 function bubble(m,i){
  if(m.role==="user")return `<div class="msg me"><div class="bub">${esc(m.text)}</div></div>`;
  const tags=(m.added||[]).map(t=>`<span class="tag">✓ Kaam shaamil: ${esc(t.title)} · ${fd(t.date)}${t.time?" "+esc(t.time):""}</span>`).concat((m.rem||[]).map(t=>`<span class="tag">♡ Yaad rakh liya: ${esc(t)}</span>`)).join("<br>");
- return `<div class="msg ai${m.err?" err":""}"><div class="bub">${m.err?esc(m.text):md(m.text)}</div>${tags?`<div>${tags}</div>`:""}${m.err?"":`<div class="acts"><button type="button" onclick="cp(${i})">Copy</button><button type="button" onclick="dl(${i})">Download</button><button type="button" onclick="speakMsg(${i})">Suniye</button><button type="button" onclick="retryMsg(${i})">Dobara likho</button></div>`}</div>`
+ return `<div class="msg ai${m.err?" err":""}"><div class="bub">${m.err?esc(m.text):md(m.text)}</div>${tags?`<div>${tags}</div>`:""}${m.err?"":`<div class="acts"><button type="button" onclick="cp(${i})">Copy</button><button type="button" onclick="dl(${i})">Download</button><button type="button" onclick="speakMsg(${i})">Suniye</button><button type="button" onclick="retryMsg(${i})">Dobara likho</button><button type="button" onclick="reword(${i},'Urdu')">Urdu mein</button><button type="button" onclick="reword(${i},'English')">English mein</button><button type="button" onclick="rememberMsg(${i},event)">Yaad rakhein</button></div>`}</div>`
 }
 function greeting(){const h=new Date().getHours();return h<12?"Subah bakhair":h<17?"Dopahar bakhair":"Shaam bakhair"}
 function vChat(){
  const td=today(),due=R.tasks.filter(t=>!t.done&&t.date===td).sort((a,b)=>(a.time||"99:99").localeCompare(b.time||"99:99"));
- const summary=`<section class="card summary" aria-label="Aaj ka khulasa"><div class="summary-line"><div><span class="eyebrow" style="margin:0">AAJ KA KHULASA</span><h2>${greeting()}</h2><p class="mut">Aaj ${due.length} kaam ${due.length===1?"hai":"hain"} · ${due.length?"Agla kaam: "+esc(due[0].title):"Aaj ka din aap ka hai."}</p></div><svg class="summary-art ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg></div></section>`;
- $("#v").innerHTML=summary+`<div class="chips" aria-label="Jaldi shuru karein">${QUICK.map((s,i)=>`<button type="button" class="chip" onclick="quick(${i})">${s}</button>`).join("")}</div><div id="msgs">${msgs.length?msgs.map(bubble).join(""):`<section class="card empty">${illustration("chat")}<h1>Assalam o Alaikum 🌸</h1><p class="mut">Main aap ki assistant hoon. Mujhe apne kaam, tareekhein aur zaroori baatein batayein. Main unhein munazzam rakhne aur waqt par yaad dilane mein madad karungi.</p><div class="chips">${SUG.map((s,i)=>`<button type="button" class="chip" onclick="sug(${i})">${esc(s)}</button>`).join("")}</div></section>`}${busy?`<div class="msg ai" aria-label="Jawab aa raha hai"><div class="bub"><span class="typing"><i></i><i></i><i></i></span></div></div>`:""}</div><div style="height:130px"></div>`
+ const summary=`<section class="card summary" aria-label="Aaj ka khulasa"><div class="summary-line"><div><span class="eyebrow" style="margin:0">AAJ KA KHULASA</span><h2>${greeting()}${name?", "+esc(name):""}</h2><p class="mut">Aaj ${due.length} kaam ${due.length===1?"hai":"hain"} · ${due.length?"Agla kaam: "+esc(due[0].title):"Aaj ka din aap ka hai."}</p></div><svg class="summary-art ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg></div></section>`;
+ const mood=`<section class="card mood" aria-label="Aaj ka mood"><span class="mood-symbol" aria-hidden="true">✦</span><div><span class="eyebrow">AAJ KA MOOD</span><p class="mut">${THOUGHTS[Math.floor(P(td).getTime()/864e5)%THOUGHTS.length]}</p></div></section>`;
+ $("#v").innerHTML=summary+mood+`<div class="chips" aria-label="Jaldi shuru karein">${QUICK.map((s,i)=>`<button type="button" class="chip" onclick="quick(${i})">${s}</button>`).join("")}<button type="button" class="chip" onclick="toggleSearch()">${chatSearch?"Band karein":"Dhoondein"}</button></div>${chatSearch?`<input id="csearch" type="search" placeholder="Chat mein dhoondein…" value="${esc(chatQuery)}" oninput="chatFind(this.value)">`:""}<div id="msgs">${msgs.length?msgsHtml():`<section class="card empty">${illustration("chat")}<h1>Assalam o Alaikum 🌸</h1><p class="mut">Main aap ki assistant hoon. Mujhe apne kaam, tareekhein aur zaroori baatein batayein. Main unhein munazzam rakhne aur waqt par yaad dilane mein madad karungi.</p><div class="chips">${SUG.map((s,i)=>`<button type="button" class="chip" onclick="sug(${i})">${esc(s)}</button>`).join("")}</div></section>`}${busy?`<div class="msg ai" aria-label="Jawab aa raha hai"><div class="bub"><span class="typing"><i></i><i></i><i></i></span></div></div>`:""}</div><div style="height:130px"></div>`
 }
+let chatSearch=false,chatQuery="";
+function msgsHtml(){const q=chatQuery.toLowerCase();const a=msgs.map((m,i)=>[m,i]).filter(([m])=>!q||String(m.text).toLowerCase().includes(q));return a.length?a.map(([m,i])=>bubble(m,i)).join(""):'<p class="mut">Koi paigham nahi mila.</p>'}
+function chatFind(v){chatQuery=v;const e=$("#msgs");if(e)e.innerHTML=msgsHtml()}
+function toggleSearch(){chatSearch=!chatSearch;if(!chatSearch)chatQuery="";vChat();if(chatSearch)setTimeout(()=>{const e=$("#csearch");if(e)e.focus()},30)}
+async function rememberMsg(i,event){const m=msgs[i];if(!m||m.role!=="ai"||m.err)return;const b=event.currentTarget;b.disabled=true;try{await api("/api/memory",{add:m.text.slice(0,300)});toast("Yaad rakh liya ✓")}catch(e){toast(e.message)}finally{if(b.isConnected)b.disabled=false}}
+function reword(i,l){if(busy)return;$("#in").value="Upar wala jawab "+l+" mein dobara likho.";send()}
 function sug(i){$("#in").value=SUG[i];$("#in").focus()}
 function quick(i){$("#in").value=QTEXT[i];fit();$("#in").focus()}
 function retryMsg(i){const previous=msgs.slice(0,i).reverse().find(m=>m.role==="user");if(!previous||busy){toast("Dobara bhejne ke liye paigham nahi mila");return}$("#in").value=previous.text;fit();send()}
@@ -242,20 +245,24 @@ function dl(i){
  const h=`<html><head><meta charset="utf-8"><title>Meri Assistant</title></head><body style="font-family:Calibri,Arial;font-size:12pt">${md(msgs[i].text)}</body></html>`;
  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff",h],{type:"application/msword"}));a.download="assistant-"+today()+".doc";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),60000);toast("Download shuru")
 }
+function chooseWeek(d){weekDate=weekDate===d?"":d;vTask()}
+function isImportant(t){return /zaroori|urgent|important|priority/i.test(String(t.title||""))}
+function celebrate(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const box=document.createElement("div");box.className="sparkles";for(let i=0;i<17;i++){const p=document.createElement("span");p.style.setProperty("--x",45+Math.random()*10+"%");p.style.setProperty("--y",35+Math.random()*15+"%");p.style.setProperty("--dx",(Math.random()-.5)*240+"px");p.style.setProperty("--dy",(Math.random()-.5)*230+"px");box.appendChild(p)}document.body.appendChild(box);setTimeout(()=>box.remove(),1100)}
 function setTaskFilter(k){taskFilter=k;vTask()}
 function vTask(){
  const td=today(),all=R.tasks||[],todayTasks=all.filter(t=>t.date===td),completed=todayTasks.filter(t=>t.done).length,overall=todayTasks.length;
- const filtered=all.filter(t=>taskFilter==="all"||taskFilter==="today"&&t.date===td||taskFilter==="pending"&&!t.done||taskFilter==="done"&&t.done);
+ const filtered=all.filter(t=>(taskFilter==="all"||taskFilter==="today"&&t.date===td||taskFilter==="pending"&&!t.done||taskFilter==="done"&&t.done)&&(!weekDate||t.date===weekDate));
  const by={late:[],today:[],tom:[],week:[],later:[],done:[]};
  [...filtered].sort((a,b)=>(a.date+(a.time||"99:99")).localeCompare(b.date+(b.time||"99:99"))).forEach(t=>{const d=dd(td,t.date);(t.done?by.done:d<0?by.late:d===0?by.today:d===1?by.tom:d<=7?by.week:by.later).push(t)});
- const row=t=>`<div class="task${t.done?" done":""}" data-id="${esc(t.id)}"><button type="button" class="ck" onclick="tdone('${esc(t.id)}',${!t.done})" aria-label="${t.done?"Kaam dobara kholein":"Mukammal karein"}">${t.done?"✓":""}</button><div class="tt"><b>${esc(t.title)}</b><span class="mut ${!t.done&&t.date<td?"late":""}">${fd(t.date)}${t.time?" · "+esc(t.time):""}</span></div><button type="button" class="x" onclick="trm('${esc(t.id)}')" aria-label="Kaam hata dein">×</button></div>`;
+ const row=t=>`<div class="task${t.done?" done":""}" data-id="${esc(t.id)}"><button type="button" class="ck" onclick="tdone('${esc(t.id)}',${!t.done})" aria-label="${t.done?"Kaam dobara kholein":"Mukammal karein"}">${t.done?"✓":""}</button><div class="tt"><b><span class="priority-dot ${isImportant(t)?"":"ordinary"}" aria-label="${isImportant(t)?"Zaroori":"Aam"}"></span>${esc(t.title)}</b><span class="mut ${!t.done&&t.date<td?"late":""}">${fd(t.date)}${t.time?" · "+esc(t.time):""}</span></div><button type="button" class="x" onclick="trm('${esc(t.id)}')" aria-label="Kaam hata dein">×</button></div>`;
  const sec=(n,a,c)=>a.length?`<section class="card"><h2 ${c?`class="late"`:""}>${n}</h2>${a.map(row).join("")}</section>`:"";
  const filters=[["all","Sab"],["today","Aaj"],["pending","Baqi"],["done","Mukammal"]];
- $("#v").innerHTML=`<span class="eyebrow">AAPKE KAAM</span><h1>Kaam aur tareekhein</h1><section class="card progress-card"><div class="progress-ring" style="--progress:${overall?Math.round(completed/overall*100):0}%" role="img" aria-label="Aaj ${overall} mein se ${completed} kaam mukammal"><strong>${completed}/${overall}</strong></div><div><h2>Aaj ki peshraft</h2><p class="mut">Aaj ke mukammal kaam</p></div></section><div class="filters" role="group" aria-label="Kaam filter">${filters.map(([k,n])=>`<button type="button" class="filter ${taskFilter===k?"active":""}" aria-pressed="${taskFilter===k}" onclick="setTaskFilter('${k}')">${n}</button>`).join("")}</div>${!filtered.length?`<section class="card empty">${illustration("task")}<h2>${all.length?"Is filter mein koi kaam nahi":"Abhi koi kaam nahi"}</h2><p class="mut">Neeche se shaamil karein ya "Baat" mein assistant ko bata dein.</p></section>`:""}${sec("Guzar chuke",by.late,1)}${sec("Aaj",by.today)}${sec("Kal",by.tom)}${sec("Is hafte",by.week)}${sec("Baad mein",by.later)}
+ const week=Array.from({length:7},(_,i)=>{const d=P(td);d.setDate(d.getDate()+i);const date=iso(d);return `<button type="button" class="${weekDate===date?"selected":""}" aria-pressed="${weekDate===date}" aria-label="${fd(date)} ke kaam" onclick="chooseWeek('${date}')">${DAYS[d.getDay()].slice(0,3)}<strong>${d.getDate()}</strong></button>`}).join("");
+ $("#v").innerHTML=`<span class="eyebrow">AAPKE KAAM</span><h1>Kaam aur tareekhein</h1><section class="card progress-card"><div class="progress-ring" style="--progress:${overall?Math.round(completed/overall*100):0}%" role="img" aria-label="Aaj ${overall} mein se ${completed} kaam mukammal"><strong>${completed}/${overall}</strong></div><div><h2>Aaj ki peshraft</h2><p class="mut">Aaj ke mukammal kaam</p></div></section><div class="week-strip" role="group" aria-label="Aane wale saat din">${week}</div><div class="filters" role="group" aria-label="Kaam filter">${filters.map(([k,n])=>`<button type="button" class="filter ${taskFilter===k?"active":""}" aria-pressed="${taskFilter===k}" onclick="setTaskFilter('${k}')">${n}</button>`).join("")}</div>${!filtered.length?`<section class="card empty">${illustration("task")}<h2>${all.length?"Is filter mein koi kaam nahi":"Abhi koi kaam nahi"}</h2><p class="mut">Neeche se shaamil karein ya "Baat" mein assistant ko bata dein.</p></section>`:""}${sec("Guzar chuke",by.late,1)}${sec("Aaj",by.today)}${sec("Kal",by.tom)}${sec("Is hafte",by.week)}${sec("Baad mein",by.later)}
  <section class="card"><h2>Naya kaam</h2><label for="nt">Kaam</label><input id="nt" maxlength="200" placeholder="jaise: Assignment jama karani hai"><div class="row fr"><div><label for="nd">Tareekh</label><input id="nd" type="date" value="${td}"></div><div><label for="ntm">Waqt (optional)</label><input id="ntm" type="time"></div></div><button type="button" class="p" onclick="tadd(event)">Shaamil karein</button></section>${by.done.length?`<details class="card" ${taskFilter==="done"?"open":""}><summary><b>Mukammal (${by.done.length})</b></summary>${by.done.map(row).join("")}</details>`:""}`
 }
 async function tadd(event){const title=$("#nt").value.trim(),date=$("#nd").value;if(!title||!date){toast("Kaam aur tareekh likhein");return}const b=event.currentTarget;b.disabled=true;try{await api("/api/task",{title,date,time:$("#ntm").value||""});toast("Shaamil ho gaya ✓");draw()}catch(e){toast(e.message)}finally{b.disabled=false}}
-async function tdone(id,done){try{await api("/api/task/update",{id,done});draw()}catch(e){toast(e.message)}}
+async function tdone(id,done){try{await api("/api/task/update",{id,done});draw();if(done)celebrate()}catch(e){toast(e.message)}}
 function trm(id){showConfirm("task-"+id,"Ye kaam hata dein?",async()=>{try{await api("/api/task/update",{id,remove:true});draw()}catch(e){toast(e.message)}})}
 function memorySearch(value){memoryQuery=value;renderMemoryGrid()}
 function renderMemoryGrid(){
@@ -283,7 +290,8 @@ async function resync(){try{if(!("serviceWorker"in navigator)||!("Notification"i
 function vSet(){
  const perm="Notification"in window?Notification.permission:"na";
  $("#v").innerHTML=`<span class="eyebrow">AAPKI MARZI</span><h1>Settings</h1>
- <section class="card"><h2>Theme</h2><div class="choice-group" role="group" aria-label="Theme settings">${[["auto","Auto"],["light","Light"],["dark","Dark"]].map(([k,n])=>`<button type="button" class="${theme===k?"selected":""}" aria-pressed="${theme===k}" onclick="chooseTheme('${k}')">${n}</button>`).join("")}</div><h3 style="margin-top:22px">Rang ka andaaz</h3><div class="choice-group" role="group" aria-label="Rang ka andaaz">${[["emerald","Emerald + Champagne + Blush"],["navy","Midnight Navy + Pearl + Rose-gold"]].map(([k,n])=>`<button type="button" class="${accent===k?"selected":""}" aria-pressed="${accent===k}" onclick="chooseAccent('${k}')">${n}</button>`).join("")}</div></section>
+ <section class="card"><h2>Aapka naam</h2><label for="greetingName">Greeting ka naam</label><input id="greetingName" maxlength="40" autocomplete="nickname" placeholder="Aapka naam" value="${esc(name)}" onchange="saveName(this.value)"><p class="mut">Naam is phone par mehfooz rahega aur aaj ke khulase mein nazar aayega.</p></section>
+ <section class="card"><h2>Theme</h2><div class="choice-group" role="group" aria-label="Theme settings">${[["auto","Auto"],["light","Light"],["dark","Dark"]].map(([k,n])=>`<button type="button" class="${theme===k?"selected":""}" aria-pressed="${theme===k}" onclick="chooseTheme('${k}')">${n}</button>`).join("")}</div><h3 style="margin-top:22px">Rang ka andaaz</h3><div class="choice-group" role="group" aria-label="Rang ka andaaz">${[["mocha","Soft Mocha + Cream + Dusty Rose"],["burgundy","Deep Burgundy + Ivory + Champagne"],["sage","Sage Green + Pearl + Gold"],["emerald","Emerald + Champagne + Blush"],["navy","Midnight Navy + Pearl + Rose-gold"]].map(([k,n])=>`<button type="button" class="${accent===k?"selected":""}" aria-pressed="${accent===k}" onclick="chooseAccent('${k}')">${n}</button>`).join("")}</div><h3 style="margin-top:22px">Likhai ka size</h3><div class="choice-group" role="group" aria-label="Likhai ka size">${[[0.92,"Chhota"],[1,"Aam"],[1.12,"Bara"]].map(([k,n])=>`<button type="button" class="${fz===k?"selected":""}" aria-pressed="${fz===k}" onclick="chooseFont(${k})">${n}</button>`).join("")}</div></section>
  <section class="card voice-settings"><h2>Awaaz</h2>
  <label for="voiceLang">Bolne ki zubaan</label><select id="voiceLang" onchange="voiceSave('lang',this.value)"><option value="ur-PK">Urdu (Pakistan)</option><option value="en-IN">English (India)</option><option value="auto">Auto</option></select>
  <label class="checklabel" for="voiceAuto"><input id="voiceAuto" type="checkbox" onchange="voiceSave('auto',this.checked)"> Bolne ke baad khud bhejein</label>
@@ -293,6 +301,7 @@ function vSet(){
  <section class="card"><h2>Alert</h2><p class="mut">${perm==="granted"?(R.subs?"Is phone par alert on hain ✓":"Ijazat mil gayi, lekin phone abhi juda nahi. Neeche button dabayein."):perm==="denied"?"Alert blocked hain. Chrome ke site settings mein Notifications allow karein.":"Alert abhi on nahi."}</p><button type="button" class="p" onclick="enablePush()">${R.subs?"Alert dobara jodein":"Alert on karein"}</button><button type="button" onclick="testPush()">Test alert bhejein</button>
  <label for="dh" style="margin-top:19px">Subah ka khulasa (aaj ke kaam) kitne baje</label><select id="dh" onchange="setDigest(this.value)">${[6,7,8,9,10].map(h=>`<option value="${h}" ${h===(R.dh||8)?"selected":""}>${h}:00 AM</option>`).join("")}</select></section>
  <section class="card"><h2>Install</h2>${ip?`<button type="button" class="p" onclick="ip.prompt()">App install karein</button>`:`<p class="mut">Chrome menu ⋮ → Add to Home screen / Install app. Alert ke liye install karna behtar hai.</p>`}</section>
+ <section class="card"><h2>Privacy</h2>${lockOn()?`<p class="mut">App lock on hai ✓ Phone mein wapas aane par PIN poocha jayega.</p><button type="button" class="d" onclick="clearPin()">App lock band karein</button>`:`<p class="mut">4 se 6 ankon ka PIN lagayein, taake koi aur app na khol sake.</p><label for="newpin">Naya PIN</label><input id="newpin" type="password" inputmode="numeric" maxlength="6" autocomplete="off"><button type="button" class="p" onclick="setPin()">PIN lagayein</button>`}</section>
  <section class="card"><h2>Mehfooz</h2><button type="button" onclick="expChat()">Baat-cheet export karein</button><button type="button" onclick="showConfirm('clear-chat','Baat-cheet saaf karein? (kaam aur yaad mehfooz rahenge)',clearChat)">Baat-cheet saaf karein</button><div id="confirm-clear-chat"></div></section>
  <section class="card"><h2>Connection</h2><p class="mut">${esc(cfg.url)}</p><button type="button" class="d" onclick="showConfirm('disconnect','Is phone se connection hata dein?',disconnect)">Connection hatayein</button><div id="confirm-disconnect"></div></section>
  <p class="mut">Ye app aap ke WhatsApp ya calls nahi dekh sakti. Baat-cheet is phone ke browser mein, aur kaam/yaadasht aap ke apne Cloudflare account mein rehti hain.</p>`
@@ -329,6 +338,16 @@ addEventListener("beforeinstallprompt",e=>{e.preventDefault();ip=e});
 document.addEventListener("visibilitychange",()=>{if(!document.hidden&&cfg)api("/api/state").then(()=>{if(tab!=="chat"||!busy)draw()}).catch(()=>{})});
 $("#in").addEventListener("input",fit);
 $("#in").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey&&!matchMedia("(pointer:coarse)").matches){e.preventDefault();send()}});
+const LKEY="ma_lock";let hiddenAt=0;
+async function lhash(p){try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("ma:"+p));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){return "p:"+btoa(p)}}
+function lockOn(){return !!J(LKEY,null)}
+function showLock(){if(!lockOn())return false;$("#lockpin").value="";$("#lockerr").textContent="";$("#lock").classList.remove("hidden");setTimeout(()=>{const e=$("#lockpin");if(e)e.focus()},60);return true}
+async function unlock(){const p=$("#lockpin").value.trim();if(await lhash(p)===J(LKEY,null)){$("#lock").classList.add("hidden")}else{$("#lockerr").textContent="PIN theek nahi";$("#lockpin").value=""}}
+async function setPin(){const e=$("#newpin"),p=e?e.value.trim():"";if(!/^\d{4,6}$/.test(p)){toast("4 se 6 ankon ka PIN likhein");return}W(LKEY,await lhash(p));toast("App lock on ✓");draw()}
+function clearPin(){W(LKEY,null);toast("App lock band");draw()}
+function waveOn(x){const w=document.getElementById("wave");if(w)w.classList.toggle("hidden",!x)}
+document.addEventListener("visibilitychange",()=>{if(document.hidden)hiddenAt=Date.now();else if(lockOn()&&hiddenAt&&Date.now()-hiddenAt>30000)showLock()});
+$("#lockpin").addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
 // ---------- voice ----------
 const VKEY={lang:"ma_voice_lang",auto:"ma_voice_auto_send",reply:"ma_voice_reply",rate:"ma_voice_rate",voice:"ma_voice_choice"};
 let vr=null,vl=false,vs=!!(window.SpeechRecognition||window.webkitSpeechRecognition),tts=!!(window.speechSynthesis&&window.SpeechSynthesisUtterance);
@@ -348,10 +367,10 @@ function toggleVoice(){
  if(!vs){toast("Is browser mein mic support nahi karta");return}
  if(vl){try{vr.stop()}catch(e){}return}
  let C=window.SpeechRecognition||window.webkitSpeechRecognition;vr=new C();vr.lang=vlang();vr.interimResults=true;let final="";
- vr.onstart=()=>{vl=true;document.getElementById("voiceBtn")?.classList.add("listening");toast("Sun rahi hoon…")};
+ vr.onstart=()=>{vl=true;waveOn(true);document.getElementById("voiceBtn")?.classList.add("listening");toast("Sun rahi hoon…")};
  vr.onresult=e=>{let interim="";for(let i=e.resultIndex;i<e.results.length;i++){let t=e.results[i][0].transcript;if(e.results[i].isFinal)final+=t;else interim+=t}let el=document.getElementById("in");if(el){el.value=(final+interim).trim();fit()}};
- vr.onerror=e=>{vl=false;document.getElementById("voiceBtn")?.classList.remove("listening");toast(["not-allowed","service-not-allowed"].includes(e.error)?"Mic ki ijazat nahi mili. Browser settings mein microphone allow karein.":"Mic mein masla hua. Dobara koshish karein.")};
- vr.onend=()=>{vl=false;document.getElementById("voiceBtn")?.classList.remove("listening");let el=document.getElementById("in");if(el&&final.trim()){el.value=final.trim();fit();if(vget("auto",false))send()}};
+ vr.onerror=e=>{vl=false;waveOn(false);document.getElementById("voiceBtn")?.classList.remove("listening");toast(["not-allowed","service-not-allowed"].includes(e.error)?"Mic ki ijazat nahi mili. Browser settings mein microphone allow karein.":"Mic mein masla hua. Dobara koshish karein.")};
+ vr.onend=()=>{vl=false;waveOn(false);document.getElementById("voiceBtn")?.classList.remove("listening");let el=document.getElementById("in");if(el&&final.trim()){el.value=final.trim();fit();if(vget("auto",false))send()}};
  try{vr.start()}catch(e){toast("Mic shuru nahi ho saka. Dobara koshish karein.")}
 }
 function vclean(t){return String(t||"").replace(/```[\s\S]*?```/g," ").replace(/`([^`]+)`/g,"$1").replace(/^\s{0,3}#{1,6}\s+/gm,"").replace(/^\s*[-*+]\s+/gm,"").replace(/\[([^\]]+)\]\([^)]+\)/g,"$1").replace(/[*_~>#]/g,"").replace(/\s+/g," ").trim()}
@@ -370,7 +389,9 @@ function voiceInit(){
  if(tts){speechSynthesis.onvoiceschanged=vpopulate;vpopulate()}
 }
 voiceInit();
+applyFont();
 applyTheme();
+showLock();
 if(cfg&&cfg.url&&cfg.key)start();else $("#setup").classList.remove("hidden");
 if("serviceWorker"in navigator&&location.protocol!=="file:")navigator.serviceWorker.register("./sw.js").catch(()=>{});
 </script>
