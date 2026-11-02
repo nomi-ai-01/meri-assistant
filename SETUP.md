@@ -1,7 +1,7 @@
 # Meri Assistant: setup (sirf phone se, sab free)
 
 Kul 3 hissay hain: **app** (GitHub), **server** (Cloudflare Worker) aur **AI** (Google Gemini ki free key).
-Aap ke paas files hain: `index.html`, `sw.js`, `manifest.webmanifest`, `icon.svg` (app) aur `worker.js` (server).
+Aap ke paas files hain: `index.html`, `sw.js`, `manifest.webmanifest`, images (app) aur `worker.js` (server).
 
 Cloudflare/GitHub/Google ki screens ke naam kabhi kabhi thore badal jate hain. Agar koi button ka naam alag ho to us se milta julta dhoondein.
 
@@ -10,7 +10,7 @@ Cloudflare/GitHub/Google ki screens ke naam kabhi kabhi thore badal jate hain. A
 ## Qadam 1: App GitHub par rakhein (5 minute)
 
 1. GitHub mein **naya repo** banayein: naam `meri-assistant`, **Public**.
-2. **Add file > Upload files** se ye 5 files upload karein: `index.html`, `sw.js`, `manifest.webmanifest`, `icon.svg`, `worker.js`. **Commit changes** dabayein.
+2. **Add file > Upload files** se is folder ki saari files upload karein (`index.html`, `sw.js`, `manifest.webmanifest`, `worker.js` aur saari `.png` images). **Commit changes** dabayein.
    (`worker.js` mein koi raaz nahi hai, is liye public hone mein masla nahi.)
 3. Repo ki **Settings > Pages** mein: Source = *Deploy from a branch*, Branch = `main`, folder = `/ (root)`, **Save**.
 4. 1 se 2 minute baad aap ki app ka address ye hoga: `https://AAPKA-GITHUB-NAAM.github.io/meri-assistant/`

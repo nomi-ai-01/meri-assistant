@@ -1,9 +1,8 @@
-const C="meri-assistant-v8",F=["./","./index.html","./manifest.webmanifest","./icon.svg"];
-self.addEventListener("install",e=>{e.waitUntil(caches.open(C).then(c=>Promise.allSettled(F.map(f=>c.add(f)))).then(()=>self.skipWaiting()))});
-self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
-self.addEventListener("fetch",e=>{const r=e.request;if(r.method!=="GET"||new URL(r.url).origin!==location.origin)return;
-e.respondWith(fetch(r).then(x=>{if(x.ok){const c=x.clone();caches.open(C).then(h=>h.put(r,c))}return x}).catch(()=>caches.match(r).then(m=>m||caches.match("./index.html"))))});
-self.addEventListener("push",e=>{let d={};try{d=e.data?e.data.json():{}}catch(x){d={body:e.data?e.data.text():""}}
-e.waitUntil(self.registration.showNotification(d.title||"Meri Assistant",{body:d.body||"",icon:"icon.svg",badge:"icon.svg",tag:d.tag||undefined,renotify:!!d.tag,vibrate:[120,60,120],data:{url:"./"}}))});
-self.addEventListener("notificationclick",e=>{e.notification.close();
-e.waitUntil(self.clients.matchAll({type:"window",includeUncontrolled:true}).then(l=>{for(const c of l){if("focus"in c)return c.focus()}return self.clients.openWindow("./")}))});
+'use strict';
+const CACHE='meri-assistant-static-v4';
+const FILES=['./','./index.html','./manifest.webmanifest','./logo-mark.png','./favicon.png','./apple-touch-icon.png','./icon-192.png','./icon-512.png','./icon-maskable-512.png'];
+self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()))});
+self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
+self.addEventListener('fetch',event=>{const req=event.request,url=new URL(req.url);if(req.method!=='GET'||url.origin!==location.origin)return;event.respondWith(fetch(req).then(response=>{if(response&&response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(req,copy))}return response}).catch(async()=>{const cached=await caches.match(req);if(cached)return cached;if(req.mode==='navigate')return caches.match('./index.html');return new Response('Offline',{status:503,statusText:'Offline'})}))});
+self.addEventListener('push',event=>{let data={title:'Meri Assistant',body:'Aap ke liye aik naya paigham hai.',url:'./'};try{data={...data,...event.data.json()}}catch{if(event.data)data.body=event.data.text()}event.waitUntil(self.registration.showNotification(data.title,{body:data.body,icon:'./icon-192.png',badge:'./favicon.png',data:{url:data.url||'./'},tag:'meri-assistant-update'}))});
+self.addEventListener('notificationclick',event=>{event.notification.close();const target=new URL(event.notification.data?.url||'./',self.location.origin).href;event.waitUntil(clients.matchAll({type:'window',includeUncontrolled:true}).then(list=>{for(const client of list){if(new URL(client.url).origin===self.location.origin){client.navigate(target);return client.focus()}}return clients.openWindow(target)}))});
