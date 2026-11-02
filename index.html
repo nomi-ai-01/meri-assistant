@@ -47,6 +47,30 @@ html[data-mode="dark"] .hero-card{background:linear-gradient(125deg,#102b63,#173
 @media(max-height:720px) and (max-width:760px){.hero-card{min-height:108px}.weekly-card{display:none}.home-stats{margin-bottom:6px}.hero-mascot{transform:scale(.65);margin-left:-24px}}
 @media(prefers-reduced-motion:reduce){.mascot,.mascot-eye,.mascot-star,.opening-overlay,.opening-inner{animation:none!important}}
 
+
+/* Mobile composer visibility fix: keep the message field above the bottom tab bar */
+@media(max-width:760px){
+  #view-baat.active{padding-bottom:calc(86px + env(safe-area-inset-bottom))!important}
+  #view-baat .chat-layout{min-height:0;height:100%;overflow:hidden}
+  #view-baat .chat-panel{min-height:0;overflow:hidden;padding-bottom:0}
+  #view-baat .chat-scroll{min-height:0;flex:1 1 0;padding-bottom:76px;overscroll-behavior:contain}
+  #view-baat .composer{
+    position:fixed!important;left:12px;right:12px;
+    bottom:calc(74px + env(safe-area-inset-bottom));
+    z-index:40;width:auto;box-sizing:border-box;
+    border:1px solid var(--line);border-radius:17px;
+    box-shadow:0 8px 28px #0005;padding:7px;
+    background:color-mix(in srgb,var(--paper) 97%,#fff 3%);
+  }
+  #view-baat .composer textarea{display:block!important;visibility:visible!important;opacity:1!important;flex:1 1 auto;width:0;min-width:0}
+  #view-baat .composer .send{display:grid!important;visibility:visible!important;opacity:1!important}
+  #view-baat .composer-hint{display:none!important}
+}
+@media(max-width:380px){
+  #view-baat .composer{left:8px;right:8px}
+  #view-baat .composer textarea{font-size:11px}
+}
+
 </style></head><body><div id="app" class="app"></div><div id="modalroot"></div><div id="toastroot" aria-live="polite"></div>
 <script>
 (()=>{'use strict';
