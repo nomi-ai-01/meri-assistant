@@ -1,37 +1,16 @@
-# Meri Assistant PWA
+# Meri Assistant
+
+A mobile-first personal assistant PWA with a warm editorial visual identity.
+
+## Features
+- Roman Urdu chat with text and browser speech input/output
+- Tasks with date, time, priority, completion and delete/undo
+- Saved memories with search, edit and delete
+- Monthly calendar with Hijri day hints and task markers
+- Weekly completion chart and daily dashboard
+- Light, dark and automatic themes
+- Push notifications, daily digest settings and PIN lock
+- Chat search, pinned messages, export and install prompt
 
 ## Deploy
-1. Upload every file in this folder to your GitHub Pages publish directory.
-2. Enable GitHub Pages and open the HTTPS URL.
-3. Complete first-run setup with your Worker URL and app key.
-
-## Project files
-- index.html: single-file application (HTML, CSS, JS)
-- manifest.webmanifest: install metadata
-- sw.js: versioned same-origin network-first cache and push handlers
-- logo-mark.png, favicon.png, apple-touch-icon.png, icon-192.png, icon-512.png, icon-maskable-512.png: supplied-brand assets
-
-## Backend
-Uses the configured Worker with `x-app-key`, JSON content type, and a 75-second request timeout. Keep the backend contract and storage key names documented in the project source.
-
-## Notes
-- Push requires HTTPS, notification permission, a valid VAPID public key, and backend support.
-- Browser speech recognition/synthesis support varies.
-- Priority is a client-side enhancement because priority is not part of the supplied task schema.
-- Calendar Hijri estimates can vary; confirm dates for official Pakistani observances.
-
-
-## Premium interface update (2026-11)
-- Added the animated mini robot companion and a short first-open logo/robot reveal.
-- Added quick actions for tasks, memories, voice input, and chat.
-- Added universal search across locally stored chats, tasks, and memories.
-- Added a seven-day completion overview and overdue-task count.
-- Kept the chat composer visible in the mobile home screen.
-- Added memory editing while retaining the existing add/delete API behavior.
-- Bumped the service-worker cache version so installed PWAs refresh the updated interface.
-
-## Backend/API compatibility
-The original Worker routes, KV state format, `GEMINI_API_KEY`, `APP_KEY`, `GEMINI_MODEL`,
-and frontend `x-app-key` request contract are preserved. The `/api/memory` route now also
-accepts an additive `{edit: index, value: text}` action. Configure secrets in Cloudflare
-Worker settings; never paste secret API keys into public frontend files or commit them to GitHub.
+Upload the complete `meri-assistant/` folder to GitHub Pages. Follow `SETUP.md` to connect your existing Cloudflare Worker.
