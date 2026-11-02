@@ -283,6 +283,9 @@ async function handle(req, env) {
   }
   if (p === "/api/memory") {
     if (typeof b.add === "string" && b.add.trim()) { const m = b.add.trim().slice(0, 300); if (!st.memory.includes(m) && st.memory.length < 80) st.memory.push(m); }
+    if (Number.isInteger(b.edit) && b.edit >= 0 && b.edit < st.memory.length && typeof b.value === "string" && b.value.trim()) {
+      st.memory[b.edit] = b.value.trim().slice(0, 300);
+    }
     if (Number.isInteger(b.remove) && b.remove >= 0 && b.remove < st.memory.length) st.memory.splice(b.remove, 1);
     return done(view(st));
   }
