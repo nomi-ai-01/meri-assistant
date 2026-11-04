@@ -222,12 +222,12 @@ async function chat(env, st, body, now) {
   if (!hist.length || hist[hist.length - 1].role !== "user") throw new Error("Message khali hai");
   const text = await askGemini(env, systemPrompt(st, now), hist);
   let out;
-try { out = JSON.parse(text); } catch (e) {
-  const mt = text.match(/"reply"\s*:\s*"((?:[^"\\]|\\.)*)"/);
-  let rep = "";
-  try { rep = mt ? JSON.parse('"' + mt[1] + '"') : ""; } catch {}
-  out = { reply: rep || "Maazrat, jawab theek se nahi bana. Dobara likhein." };
-}
+  try { out = JSON.parse(text); } catch (e) {
+    const mt = text.match(/"reply"\s*:\s*"((?:[^"\\]|\\.)*)"/);
+    let rep = "";
+    try { rep = mt ? JSON.parse('"' + mt[1] + '"') : ""; } catch {}
+    out = { reply: rep || "Maazrat, jawab theek se nahi bana. Dobara likhein." };
+  }
   const added = [], remembered = [], completed = [];
   for (const t of Array.isArray(out.tasks) ? out.tasks : []) { const x = addTask(st, t, now); if (x) added.push(x); }
   for (let m of Array.isArray(out.memories) ? out.memories : []) {

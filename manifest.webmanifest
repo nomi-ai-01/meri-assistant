@@ -1,14 +1,14 @@
 {
   "name": "Meri Assistant",
-  "short_name": "Meri",
-  "description": "Aap ka rozana saathi — chat, kaam, yaadein aur taqweem.",
+  "short_name": "Meri Assistant",
+  "description": "Aap ka rozana madadgaar",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#06112b",
-  "theme_color": "#06112b",
-  "lang": "ur",
+  "theme_color": "#07132f",
+  "lang": "en",
   "icons": [
     {
       "src": "./icon-192.png",
