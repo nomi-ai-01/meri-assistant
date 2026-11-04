@@ -174,6 +174,8 @@ Agar user koi kaam, deadline, appointment ya reminder bataye to "tasks" mein daa
 Agar user apne baare mein koi aham baat bataye jo yaad rakhni chahiye (naam, pasand, rishte, ahem tareekhein, aadatein) to chhote jumle mein "memories" mein daalo. Purani memory dobara na daalo.
 Agar user bataye ke koi kaam ho gaya to uski id "complete_ids" mein do.
 Jo kaam tum nahi kar sakti (WhatsApp ya calls dekhna, kisi ko message bhejna) un ke baare mein jhoot na bolo.
+Greeting (Hello, Salam) ka jawab chhoti si greeting se do, "main theek hoon" jaisa jawab tab do jab user ne haal poocha ho.
+Jawab 1-3 jumlon ka rakho jab tak user lamba kaam na maange. Koi baat dohrao mat.
 Hamesha sirf JSON do: {"reply": "...", "tasks": [{"title","date","time"}], "memories": ["..."], "complete_ids": ["..."]}. tasks/memories/complete_ids khali ho to khali list do.
 
 Yaad rakhi hui baatein:
@@ -187,40 +189,45 @@ async function askGemini(env, sys, contents) {
   const models = env.GEMINI_MODEL ? [env.GEMINI_MODEL] : MODELS;
   let last = "";
   for (const m of models) {
-    for (const useSchema of [true, false]) {
-      const gc = { responseMimeType: "application/json", maxOutputTokens: 8192, temperature: 0.7 };
-      if (useSchema) gc.responseSchema = SCHEMA;
+    for (const strict of [true, false]) {
+      const gc = { responseMimeType: "application/json", maxOutputTokens: 2048, temperature: 0.5 };
+      if (strict) { gc.responseSchema = SCHEMA; gc.thinkingConfig = { thinkingBudget: 0 }; }
       let r;
       try {
         r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
           method: "POST",
           headers: { "content-type": "application/json", "x-goog-api-key": env.GEMINI_API_KEY },
           body: JSON.stringify({ systemInstruction: { parts: [{ text: sys }] }, contents, generationConfig: gc }),
-          signal: AbortSignal.timeout(22000),
+          signal: AbortSignal.timeout(20000),
         });
-      } catch (e) { last = `${m}: der lag gayi ya network masla`; break; }
+      } catch (e) { last = `${m}: der lag gayi`; break; }
       if (r.ok) {
         const j = await r.json();
         const text = (j.candidates?.[0]?.content?.parts || []).map((p) => p.text || "").join("");
         if (text) return text;
-        last = "AI ne khali jawab diya";
-        break;
+        last = "AI ne khali jawab diya"; break;
       }
       last = `${m}: ${r.status} ${(await r.text()).slice(0, 200)}`;
-      if (r.status !== 400) break; // 400 par bina schema dobara koshish, baqi par agla model
+      if (r.status !== 400) break;
     }
   }
   throw new Error(last || "AI jawab nahi de saka");
 }
 
 async function chat(env, st, body, now) {
-  const hist = (Array.isArray(body.history) ? body.history : []).slice(-24)
-    .map((m) => ({ role: m.role === "user" ? "user" : "model", parts: [{ text: String(m.text || "").slice(0, 6000) }] }))
+  const hist = (Array.isArray(body.history) ? body.history : []).slice(-10)
+    .filter((m) => !(m.role !== "user" && /"(title|date|reply)"\s*:/.test(String(m.text || ""))))
+    .map((m) => ({ role: m.role === "user" ? "user" : "model", parts: [{ text: String(m.text || "").slice(0, m.role === "user" ? 4000 : 1200) }] }))
     .filter((m) => m.parts[0].text);
   if (!hist.length || hist[hist.length - 1].role !== "user") throw new Error("Message khali hai");
   const text = await askGemini(env, systemPrompt(st, now), hist);
   let out;
-  try { out = JSON.parse(text); } catch (e) { out = { reply: text }; }
+try { out = JSON.parse(text); } catch (e) {
+  const mt = text.match(/"reply"\s*:\s*"((?:[^"\\]|\\.)*)"/);
+  let rep = "";
+  try { rep = mt ? JSON.parse('"' + mt[1] + '"') : ""; } catch {}
+  out = { reply: rep || "Maazrat, jawab theek se nahi bana. Dobara likhein." };
+}
   const added = [], remembered = [], completed = [];
   for (const t of Array.isArray(out.tasks) ? out.tasks : []) { const x = addTask(st, t, now); if (x) added.push(x); }
   for (let m of Array.isArray(out.memories) ? out.memories : []) {
