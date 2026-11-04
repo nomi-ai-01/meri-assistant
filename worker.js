@@ -176,6 +176,7 @@ Agar user bataye ke koi kaam ho gaya to uski id "complete_ids" mein do.
 Jo kaam tum nahi kar sakti (WhatsApp ya calls dekhna, kisi ko message bhejna) un ke baare mein jhoot na bolo.
 Greeting (Hello, Salam) ka jawab chhoti si greeting se do, "main theek hoon" jaisa jawab tab do jab user ne haal poocha ho.
 Jawab 1-3 jumlon ka rakho jab tak user lamba kaam na maange. Koi baat dohrao mat.
+Agar user image, PDF ya file de to usay dekh kar kaam karo. Pic ya file se text nikalna ho to poora text "reply" mein likho, kuch na chhodo.
 Hamesha sirf JSON do: {"reply": "...", "tasks": [{"title","date","time"}], "memories": ["..."], "complete_ids": ["..."]}. tasks/memories/complete_ids khali ho to khali list do.
 
 Yaad rakhi hui baatein:
@@ -198,7 +199,7 @@ async function askGemini(env, sys, contents) {
           method: "POST",
           headers: { "content-type": "application/json", "x-goog-api-key": env.GEMINI_API_KEY },
           body: JSON.stringify({ systemInstruction: { parts: [{ text: sys }] }, contents, generationConfig: gc }),
-          signal: AbortSignal.timeout(20000),
+          signal: AbortSignal.timeout(40000),
         });
       } catch (e) { last = `${m}: der lag gayi`; break; }
       if (r.ok) {
@@ -220,6 +221,12 @@ async function chat(env, st, body, now) {
     .map((m) => ({ role: m.role === "user" ? "user" : "model", parts: [{ text: String(m.text || "").slice(0, m.role === "user" ? 4000 : 1200) }] }))
     .filter((m) => m.parts[0].text);
   if (!hist.length || hist[hist.length - 1].role !== "user") throw new Error("Message khali hai");
+  const files = Array.isArray(body.files) ? body.files.slice(0, 6) : [];
+  const lastp = hist[hist.length - 1].parts;
+  for (const f of files) {
+    if (f && f.kind === "text" && f.text) lastp.push({ text: `[File: ${String(f.name || "").slice(0, 80)}]\n${String(f.text).slice(0, 60000)}` });
+    else if (f && f.data && /^(image\/(png|jpeg|webp|gif|heic|heif)|application\/pdf)$/.test(String(f.mime))) lastp.push({ inline_data: { mime_type: f.mime, data: f.data } });
+  }
   const text = await askGemini(env, systemPrompt(st, now), hist);
   let out;
   try { out = JSON.parse(text); } catch (e) {
