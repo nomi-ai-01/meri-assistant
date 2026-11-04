@@ -95,6 +95,56 @@ html,body{background:#06112b;color:#f3f7ff}
 @media(max-width:390px){.hero-card{min-height:160px;padding:14px}.hero-copy h2{font-size:18px}.hero-mascot{transform:scale(.88);margin-right:-16px}.hero-btn{font-size:9px;padding:9px}.week-bar i{width:14px}.weekly-card{padding:10px}.week-bars{gap:1px}}
 @media(max-height:700px) and (max-width:760px){.home-dashboard{flex-basis:49%;max-height:49%}.hero-card{min-height:145px}.weekly-card{display:block!important;min-height:120px}.week-bars{height:65px}}
 
+
+/* ===== Comfort colors + chat-first mobile ===== */
+:root{--accent:#4c8dff}
+.shell,.main{background:#0e1525!important}
+.sidebar,.topbar{background:#0e1525!important;border-color:#27324d!important}
+.panel,.weekly-card,.chat-panel,.task-card,.memory-card,.setting,.stat-card,.lockcard{background:#161f33!important;border-color:#2a3654!important;box-shadow:none!important;color:#eef2f8!important}
+.quiet,.task-sub,.weekly-top small,.assistant-strip small,.chat-panel-head small,.stat-card span,.stat-card em,.setting p,.setting label,.empty,.composer-hint{color:#b4bfd3!important}
+.status,.online-dot{background:#173a31!important;color:#8de8bd!important}
+.avatar{background:#3a6fd8!important;box-shadow:none!important}
+.hero-card{background:linear-gradient(120deg,#1a2a52,#24407a)!important;border:1px solid #34508f!important;box-shadow:none!important}
+.hero-card:before,.hero-glow{display:none!important}
+.hero-copy p,.hero-kicker{color:#dbe6fa!important}
+.stat-icon.blue{background:#1e3558!important;color:#8fc0ff!important}
+.stat-icon.amber{background:#3d3220!important;color:#f0c277!important}
+.chip,.prompt-row .chip{background:#1d2942!important;border:1px solid #33456b!important;color:#e3ebfb!important}
+.soft,.chat-panel-head .soft{background:#1d2942!important;border:1px solid #33456b!important;color:#e8eefb!important}
+.bubble{font-size:15px!important;line-height:1.7!important}
+.bubble.ai{background:#1d2942!important;border:1px solid #33456b!important;color:#f3f6fc!important}
+.bubble.user{background:#2f66cc!important;color:#fff!important}
+.msg-actions{gap:6px!important;margin-top:10px!important}
+.msg-actions button{background:#161f33!important;border:1px solid #3a4c75!important;color:#d3dcf0!important;font-size:12px!important;padding:6px 10px!important;min-height:32px!important;border-radius:10px!important}
+.msg-chips span{background:#173a31!important;color:#8de8bd!important}
+.composer{background:#1d2942!important;border:1px solid #3a4c75!important;box-shadow:none!important}
+.composer textarea{color:#f3f6fc!important;font-size:15px!important}
+.composer textarea::placeholder{color:#9aa8c6!important}
+.composer .icon-btn{background:#2a3b60!important;color:#cfe3ff!important}
+.composer .icon-btn.send{background:#3a7be8!important;box-shadow:none!important;color:#fff!important}
+.primary{background:#3a7be8!important;box-shadow:none!important}
+.bottomnav{background:#131c30!important;border-color:#27324d!important}
+.bottomnav button{color:#aab6cf!important}
+.bottomnav button.active,.nav button.active{background:#243a66!important;color:#a9c9ff!important}
+.week-bar i{background:#4c8dff!important;box-shadow:none!important}
+.week-bar strong,.week-bar span{color:#c3cee4!important}
+.field,.modal{background:#161f33!important;color:#f3f6fc!important;border-color:#33456b!important}
+.toast{background:#243a66!important;border-color:#3f5a94!important}
+.chat-scroll{scroll-behavior:auto!important}
+@media(max-width:760px){
+ .hero-card,.home-stats,.weekly-card,.home-dashboard .weekly-card{display:none!important}
+ .home-dashboard{flex:0 0 auto!important;max-height:none!important;overflow:visible!important}
+ .assistant-strip{margin:0 2px 6px!important}
+ .prompt-row{flex-wrap:nowrap!important;overflow-x:auto!important;margin-bottom:4px!important;scrollbar-width:none}
+ .prompt-row .chip{flex:none;white-space:nowrap}
+ .chat-panel{flex:1 1 auto!important;min-height:0!important}
+ .chat-panel-head b{font-size:14px!important}
+ .chat-scroll{padding:12px!important}
+ .bubble{max-width:94%!important;padding:12px 14px!important}
+}
+#chatmessages .msg-actions button{font-size:12px!important;padding:5px 9px!important;min-height:30px!important;line-height:1.2!important}
+#chatmessages .msg-actions{gap:5px!important}
+.assistant-mini,.online-dot{display:none!important}
 </style></head><body><div id="app" class="app"></div><div id="modalroot"></div><div id="toastroot" aria-live="polite"></div>
 <script>
 (()=>{'use strict';
