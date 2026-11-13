@@ -54,8 +54,7 @@ async function encrypt(sub, payload) {
 async function vapidHeader(st, endpoint) {
   const aud = new URL(endpoint).origin;
   const h = b64u(enc.encode(JSON.stringify({ typ: "JWT", alg: "ES256" })));
-  const c = b64u(enc.encode(JSON.stringify({ aud, exp: Math.floor(Date.now() / 1000) + 12 * 3600, sub: "mailto:assistant@example.com" })));
-  const key = await crypto.subtle.importKey("jwk", st.vapid.priv, { name: "ECDSA", namedCurve: "P-256" }, false, ["sign"]);
+  const c = b64u(enc.encode(JSON.stringify({ aud, exp: Math.floor(Date.now() / 1000) + 12 * 3600, sub: "mailto:apni-email@gmail.com" })));  const key = await crypto.subtle.importKey("jwk", st.vapid.priv, { name: "ECDSA", namedCurve: "P-256" }, false, ["sign"]);
   const sig = await crypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, key, enc.encode(h + "." + c));
   return `vapid t=${h}.${c}.${b64u(sig)}, k=${st.vapid.pub}`;
 }
@@ -106,8 +105,7 @@ function addTask(st, o, now) {
   const date = String(o.date || "").trim();
   if (!title || !DATE_RE.test(date) || isNaN(Date.parse(date))) return null;
   const time = TIME_RE.test(String(o.time || "")) ? o.time : "";
-  const t = { id: crypto.randomUUID().slice(0, 8), title, date, time, done: false, sent: [] };
-  t.sent = remindersOf(t, st.off).filter((r) => r.at < now).map((r) => r.k); // jo waqt guzar chuka, dobara na bheje
+  const t = { id: crypto.randomUUID().slice(0, 8), title, date, time, done: false, priority: !!o.priority, sent: [] };  t.sent = remindersOf(t, st.off).filter((r) => r.at < now).map((r) => r.k); // jo waqt guzar chuka, dobara na bheje
   st.tasks.push(t);
   return t;
 }
@@ -177,8 +175,9 @@ Jo kaam tum nahi kar sakti (WhatsApp ya calls dekhna, kisi ko message bhejna) un
 Greeting (Hello, Salam) ka jawab chhoti si greeting se do, "main theek hoon" jaisa jawab tab do jab user ne haal poocha ho.
 Jawab 1-3 jumlon ka rakho jab tak user lamba kaam na maange. Koi baat dohrao mat.
 Agar user image, PDF ya file de to usay dekh kar kaam karo. Pic ya file se text nikalna ho to poora text "reply" mein likho, kuch na chhodo.
+Jab tak tasks ya memories mein kuch na daalo, "note kar liya" ya "yaad rakh liya" mat kaho.
+Agar image mein reminder ya kaam likha ho to usay padh kar tasks mein daalo. Agar image saaf na padhi jaye to saaf batao.
 Hamesha sirf JSON do: {"reply": "...", "tasks": [{"title","date","time"}], "memories": ["..."], "complete_ids": ["..."]}. tasks/memories/complete_ids khali ho to khali list do.
-
 Yaad rakhi hui baatein:
 ${mem}
 
@@ -225,8 +224,7 @@ async function chat(env, st, body, now) {
   const lastp = hist[hist.length - 1].parts;
   for (const f of files) {
     if (f && f.kind === "text" && f.text) lastp.push({ text: `[File: ${String(f.name || "").slice(0, 80)}]\n${String(f.text).slice(0, 60000)}` });
-    else if (f && f.data && /^(image\/(png|jpeg|webp|gif|heic|heif)|application\/pdf)$/.test(String(f.mime))) lastp.push({ inline_data: { mime_type: f.mime, data: f.data } });
-  }
+    else if (f && f.data && /^(image\/(png|jpeg|webp|gif|heic|heif)|application\/pdf)$/.test(String(f.mime))) lastp.unshift({ inline_data: { mime_type: f.mime, data: f.data } });  }
   const text = await askGemini(env, systemPrompt(st, now), hist);
   let out;
   try { out = JSON.parse(text); } catch (e) {
