@@ -205,6 +205,41 @@ html,body{height:100%;overflow:hidden}
 .composer textarea::placeholder{font-size:12px!important}
 .composer .icon-btn{width:38px!important;height:38px!important}
 }
+/* ===== MERI ASSISTANT: Navy + Antique Gold ===== */
+html[data-mode="dark"]{--t-bg:#0a1226;--t-s:#111c3a;--t-s2:#18274d;--t-l:#2c3a66;--t-l2:#3d4d7e;--t-t:#f4ecd8;--t-m:#a9b2cc;--t-ac2:#e2bf7a;--t-actbg:#1d2d5c;--t-chip:#1c2a55;--t-chipt:#e2bf7a;--t-warm:#e2bf7a;--t-warmdim:#3a3220;--t-toast:#18274d;--t-hero:#1e3a8a;color-scheme:dark}
+html[data-mode="light"]{--t-bg:#f6efe0;--t-s:#fffaf0;--t-s2:#efe5cf;--t-l:#dccdaa;--t-l2:#c9b88f;--t-t:#14204a;--t-m:#6a6a5f;--t-ac2:#1e3a8a;--t-actbg:#e8dcc0;--t-chip:#ece0c4;--t-chipt:#14204a;--t-warm:#9a7428;--t-warmdim:#f1e2bb;--t-toast:#14204a;--t-hero:#1e3a8a;color-scheme:light}
+html[data-mode]{--accent:#2a4aa8!important}
+html[data-mode] .main{background:radial-gradient(ellipse at 80% 0%,#16275a 0,transparent 40%),var(--t-bg)!important}
+html[data-mode="light"] .main{background:var(--t-bg)!important}
+h1,h2,.brand,.chat-panel-head b,.hero-copy h2,.view-title h2,.setting h3,.panel h3{font-family:Georgia,'Times New Roman',serif!important;letter-spacing:.2px!important}
+.topbar h1{font-size:24px!important}
+html[data-mode] .avatar{background:linear-gradient(145deg,#2f54bd,#1b3382)!important;border:2px solid #c9a45c!important;color:#f4ecd8!important}
+html[data-mode] .primary,html[data-mode] .composer .icon-btn.send{background:linear-gradient(145deg,#2f54bd,#1b3382)!important;border:1px solid #c9a45c!important;color:#f4ecd8!important}
+html[data-mode] .chip.active,html[data-mode] .daypill.active,html[data-mode] .calday.selected{background:linear-gradient(145deg,#2f54bd,#1b3382)!important;border:1px solid #c9a45c!important}
+html[data-mode] .bubble.user{background:linear-gradient(145deg,#264aa6,#18307d)!important;border:1px solid #b8964f!important;color:#f4ecd8!important}
+html[data-mode] .bubble.user *{color:#f4ecd8!important}
+html[data-mode] .bubble.ai{border-color:var(--t-l2)!important}
+html[data-mode] .chat-panel,html[data-mode] .panel,html[data-mode] .task-card,html[data-mode] .memory-card,html[data-mode] .setting,html[data-mode] .stat-card,html[data-mode] .weekly-card{border:1px solid var(--t-l)!important;box-shadow:inset 0 1px 0 #c9a45c26!important}
+html[data-mode] .hero-card{background:linear-gradient(125deg,#0f1d44,#1e3a8a 70%,#2a4aa8)!important;border:1px solid #c9a45c!important}
+html[data-mode] .hero-btn{background:#f4ecd8!important;color:#14204a!important}
+html[data-mode] .hero-btn.ghost{background:#ffffff14!important;color:#f4ecd8!important;border:1px solid #c9a45c!important}
+html[data-mode] .hero-kicker{color:#e2bf7a!important}
+html[data-mode] .mascot-eye{background:#f0d9a0!important;box-shadow:0 0 8px #c9a45c!important}
+html[data-mode] .mascot-antenna i{background:#e2bf7a!important;box-shadow:0 0 12px #c9a45c!important}
+html[data-mode] .week-bar i{background:linear-gradient(180deg,#e9cb8a,#b98d3f)!important}
+html[data-mode] .task-progress i{background:linear-gradient(90deg,#b98d3f,#e9cb8a)!important}
+html[data-mode] .bottomnav{border-top:1px solid #c9a45c55!important}
+html[data-mode] .bottomnav button.active,html[data-mode] .nav button.active{box-shadow:inset 0 2px 0 var(--t-ac2)}
+html[data-mode] .sparkle,html[data-mode] .empty .sparkle{color:#c9a45c!important}
+.color-row,.setting label:has(+ .color-row){display:none!important}
+/* icons */
+html body .glyph{font-size:0!important;width:24px!important;height:24px!important;display:block!important;position:relative}
+html body .glyph::before{content:"";position:absolute;inset:0;background:currentColor;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+[data-tab="Baat"] .glyph{--ic:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z'/></svg>")}
+[data-tab="Kaam"] .glyph{--ic:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='9'/><path d='M7.5 12.5l3 3 6-6.5'/></svg>")}
+[data-tab="Yaad"] .glyph{--ic:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z'/></svg>")}
+[data-tab="Taqweem"] .glyph{--ic:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><rect x='4' y='5' width='16' height='15' rx='2'/><path d='M4 10h16M8 3v4M16 3v4'/></svg>")}
+[data-tab="Settings"] .glyph{--ic:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M4 7h8M18 7h2M4 17h2M12 17h8'/><circle cx='15' cy='7' r='2.2'/><circle cx='9' cy='17' r='2.2'/></svg>")}
 </style></head><body><div id="app" class="app"></div><div id="modalroot"></div><div id="toastroot" aria-live="polite"></div>
 <script>
 (()=>{'use strict';
